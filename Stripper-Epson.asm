@@ -1,4 +1,5 @@
           ORG $0900
+
 HOME      EQU $FC58
 CLREOL    EQU $FC9C
 COUT1     EQU $FDF0
@@ -8,9 +9,10 @@ COUT      EQU $FDED
 DOS3IO    EQU $03D6
 DOS3SYS   EQU $03DC
 DOS3UNK   EQU $A060
+
 L0900:    JMP L3DF5
-L0903:    byt $00
-L0904:    byt $00
+SLOT:     byt $00
+CARD:     byt $00
 L0905:    byt $00
 L0906:    byt $00
 L0907:    byt $00
@@ -31,12 +33,12 @@ L0922:    JSR L2686
 L092F:    RTS
 L0930:    JSR L5A6F
           byt $04, $00, $00
-          LDA L0903
+          LDA SLOT
           BEQ L093E
           JMP L0943
 L093E:    LDA #$10
-          STA L0903
-L0943:    LDA L0903
+          STA SLOT
+L0943:    LDA SLOT
           STA $1C
           TXA
           STA $1D
@@ -62,7 +64,7 @@ L0968:    LDA #$0C
           adr L235E
           JSR L5A49
           byt $02
-          LDA L0903
+          LDA SLOT
           STA $1C
           TXA
           STA $1D
@@ -1380,7 +1382,7 @@ L17F6:    JSR L5A6F
           LDY #$09
           LDA ($04),Y
           PHA
-          LDA L0904
+          LDA CARD
           STA $1C
           TXA
           STA $1D
@@ -3630,7 +3632,7 @@ L297C:    LDA #$2B
           adr L235E
           JSR L5A49
           byt $02
-          LDA L0904
+          LDA CARD
           STA $1C
           TXA
           STA $1D
@@ -4313,8 +4315,8 @@ L3054:    LDY #$09
           CMP #$0D
           BEQ L305F
           JMP L308A
-L305F:    INC L0904
-          LDA L0904
+L305F:    INC CARD
+          LDA CARD
           STA $1C
           TXA
           STA $1D
@@ -4332,7 +4334,7 @@ L305F:    INC L0904
           ORA ($18),Y
           BEQ L3087
           JMP L308A
-L3087:    STX L0904
+L3087:    STX CARD
 L308A:    JMP L3166
 L308D:    CLC
           LDA L5E54
@@ -4821,7 +4823,7 @@ L3423:    LDA #$01
 L342A:    LDY #$00
           LDA ($02),Y
           PHA
-          LDY L0903
+          LDY SLOT
 L3432:    LDA $C080,Y
           AND #$0E
           CMP #$02
@@ -4832,7 +4834,7 @@ L3432:    LDA $C080,Y
 L3440:    LDY #$00
           LDA ($02),Y
           PHA
-          LDY L0903
+          LDY SLOT
 L3448:    LDA $C080,Y
           AND #$03
           CMP #$01
@@ -4846,7 +4848,7 @@ L345C:    byt $00
 L345D:    byt $A0, $00
 L345F:    LDA ($02),Y
           PHA
-          LDY L0903
+          LDY SLOT
           LDA L345C
           BNE L3482
           LDA $FBB3
@@ -10100,7 +10102,7 @@ L5BFA:    LDA ($02),Y
 L5C0D:    LDY #$01
           LDX #$00
           TXA
-          RTS
+L5C12:    RTS
 L5C13:    byt $00
 L5C14:    byt $00
 L5C15:    byt $00
@@ -10124,7 +10126,7 @@ L5C29:    LDA L5C17
           STA $00
           LDX #$00
 L5C36:    LDA $40,X
-          ADC $5C13,X
+          ADC L5C13,X
           STA $40,X
           INX
           DEC $00
@@ -10142,7 +10144,7 @@ L5C42:    LSR $43
           PLA
           TAX
           LDY #$04
-L5C5D:    LDA $5C16,Y
+L5C5D:    LDA L5C16,Y
           STA $03,X
           DEX
           DEY
@@ -10160,14 +10162,14 @@ L5C6A:    JSR L5CC8
           BPL L5C88
           SEC
 L5C79:    LDA #$00
-          SBC $5C17,Y
+          SBC L5C17,Y
           STA $00,X
           INX
           INY
           DEC $00
           BNE L5C79
           BEQ L5C93
-L5C88:    LDA $5C17,Y
+L5C88:    LDA L5C17,Y
           STA $00,X
           INX
           INY
@@ -10220,8 +10222,8 @@ L5CC8:    JSR L5D51
           LDY #$04
           LDX #$00
 L5CE9:    LDA #$00
-          SBC $5C13,X
-          STA $5C13,X
+          SBC L5C13,X
+          STA L5C13,X
           INX
           DEY
           BNE L5CE9
@@ -10231,8 +10233,8 @@ L5CF5:    LDA L5C1A
           LDY #$04
           LDX #$00
 L5CFF:    LDA #$00
-          SBC $5C17,X
-          STA $5C17,X
+          SBC L5C17,X
+          STA L5C17,X
           INX
           DEY
           BNE L5CFF
@@ -10273,7 +10275,7 @@ L5D51:    TYA
           PHA
           LDY #$04
 L5D55:    LDA $03,X
-          STA $5C12,Y
+          STA L5C12,Y
           DEX
           DEY
           BNE L5D55
@@ -10282,7 +10284,7 @@ L5D55:    LDA $03,X
           TAX
           LDY #$04
 L5D63:    LDA $03,X
-          STA $5C16,Y
+          STA L5C16,Y
           DEX
           DEY
           BNE L5D63
