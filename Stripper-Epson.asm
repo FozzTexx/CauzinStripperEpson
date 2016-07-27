@@ -1,5 +1,8 @@
 	ORG $0900
 
+LB	FUNCTION b,(b&$ff)
+HB	FUNCTION b,(b>>8)
+	
 DOS3UN1	EQU $03CA
 DOS3UN2	EQU $03CD
 DOS3IO	EQU $03D6
@@ -1878,23 +1881,20 @@ L1B44:	RTS
 
 L1B45:	JSR L5A6F
 	byt $00, $00, $00
-	LDA #$1B
+	LDA #HB(L1B5B)
 	PHA
-	LDA #$5B
+	LDA #LB(L1B5B)
 	PHA
 	JSR L5A0A
 	adr L1873
 	JSR L5A49
 	byt $02
 	RTS
-L1B5B:	byt $1B
-	byt "@"
-	byt $1B
-	byt "!"
+L1B5B:	byt $1B, $40
+	byt $1B, $21
 	byt $02, $1B
-	byt "2"
-	byt $1B
-	byt "U1"
+	byt $32, $1B
+	byt $55, $31
 	byt $00
 
 L1B66:	JSR L5A6F
@@ -2970,8 +2970,7 @@ L232A:	TXA
 	LDA $81
 	STA $09
 	RTS
-L2336:	byt $08
-	byt " "
+L2336:	byt $08, $20
 	byt $08, $00
 
 L233A:	JSR L5A6F
@@ -3070,8 +3069,7 @@ L2399:	JSR L5A6F
 L23DF:	JMP HOME
 
 L23E2:	JMP CLREOL
-L23E5:	byt "LB"
-	byt $FC
+L23E5:	byt $4C, $42, $FC
 
 L23E8:	LDY #$02
 	LDA ($02),Y
@@ -3383,9 +3381,9 @@ L2594:	TXA
 	RTS
 L2600:	byt "NORMAL"
 	byt $00
-	byt " HIGH "
+L2607:	byt " HIGH "
 	byt $00
-	byt "  LOW "
+L260E:	byt "  LOW "
 	byt $00
 
 L2615:	JSR L5A6F
@@ -4121,17 +4119,17 @@ L2B93:	JSR L5A6F
 	byt $02
 	RTS
 L2BFE:	byt $00
-	byt "        PRESS RETURN TO TOGGLE       "
+L2BFF:	byt "        PRESS RETURN TO TOGGLE       "
 	byt $00
-	byt "AFTER READING, RUN FILE?        (Y/N)"
+L2C25:	byt "AFTER READING, RUN FILE?        (Y/N)"
 	byt $00
-	byt "CATALOG OF DRIVE 1 OR 2         (1/2)"
+L2C4B:	byt "CATALOG OF DRIVE 1 OR 2         (1/2)"
 	byt $00
-	byt "        PRESS RETURN TO TOGGLE       "
+L2C71:	byt "        PRESS RETURN TO TOGGLE       "
 	byt $00
-	byt "   FILENAME  OR  CTRL-D  TO REMOVE   "
+L2C97:	byt "   FILENAME  OR  CTRL-D  TO REMOVE   "
 	byt $00
-	byt "        PRINT DATA STRIPS?     (P)   "
+L2CBD:	byt "        PRINT DATA STRIPS?     (P)   "
 	byt $00, $0D
 	byt "   USE ARROW KEYS TO SELECT FUNCTION"
 	byt $00
@@ -5230,11 +5228,11 @@ L34C9:	LDA $C089,Y
 	RTS
 L34DA:	byt "l"
 	byt $08, $00
-	byt "  GRAPPLER  "
+L34DD:	byt "  GRAPPLER  "
 	byt $00
-	byt "  DUMPLING  "
+L34EA:	byt "  DUMPLING  "
 	byt $00
-	byt "SUPER SERIAL"
+L34F7:	byt "SUPER SERIAL"
 	byt $00
 
 L3504:	CLC
@@ -9642,11 +9640,10 @@ L5492:	RTS
 L5493:	JMP ($000E)
 L5496:	byt "KB:"
 	byt $00, $00, $00, $00, $00
-	byt "9U"
-	byt $B7
-	byt "T"
-	byt $00, $00, $94
-	byt "U"
+	adr L5539
+	adr L54B7
+	byt $00, $00
+	adr L5594
 	byt $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	byt $00, $00, $00, $00, $00, $00
 L54B6:	byt $00
@@ -9916,7 +9913,7 @@ L568D:	LDA $82
 	ADC #$FF
 	STA $83
 	JMP L564F
-L56B9:	byt "`"
+L56B9:	byt $60
 
 L56BA:	LDY #$00
 	LDA ($02),Y
@@ -10966,22 +10963,19 @@ L5E52:	byt $00
 L5E53:	byt $00
 L5E54:	byt $00
 L5E55:	byt $00
-L5E56:	byt $00
-	byt "&"
-	byt $07
-	byt "&"
-	byt $0E
-	byt "&"
+L5E56:	adr L2600
+	adr L2607
+	adr L260E
 	byt $00, $00, $00, $00, $01, $02, $03, $04, $00, $05
 	byt $05, $05, $05, $05, $05, $05, $05, $05, $05, $00
-	byt $06, $00, $00, $00, $FE
-	byt "+"
-	byt $FF
-	byt "+%,K,q,"
-	byt $97
-	byt ","
-	byt $BD
-	byt ","
+	byt $06, $00, $00, $00
+	adr L2BFE
+	adr L2BFF
+	adr L2C25
+	adr L2C4B
+	adr L2C71
+	adr L2C97
+	adr L2CBD
 	byt $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	byt $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	byt $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
@@ -11113,13 +11107,12 @@ L6037:	byt $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	byt $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	byt $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	byt $00, $00, $00
-	byt "*4"
-	byt $DD
-	byt "4@4"
-	byt $EA
-	byt "4]4"
-	byt $F7
-	byt "4"
+	adr L342A
+	adr L34DD
+	adr L3440
+	adr L34EA
+	adr L345D
+	adr L34F7
 	byt $00, $00, $00, $00
 L6068:	byt $00
 L6069:	byt $00
