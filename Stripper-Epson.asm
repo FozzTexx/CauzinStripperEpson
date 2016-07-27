@@ -10992,11 +10992,11 @@ L5EB0:	byt $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	byt $FF, $FF, $FF, $FF, $FF
 L5ED3:	byt $00
 L5ED4:	byt $00
-L5ED5:	byt "V"
+L5ED5:	byt $56
 	byt $96
-	byt "f"
+	byt $66
 	byt $A6
-L5ED9:	byt "."
+L5ED9:	byt $2E
 L5EDA:	byt $04
 L5EDB:	byt $03
 L5EDC:	byt $00
@@ -11005,9 +11005,9 @@ L5EDD:	byt $0F, $0F, $0F, $FF, $FF, $FF, $FF, $FF, $FF, $FF
 	byt $FF, $F0, $F0, $F0
 L5EF5:	byt $08
 L5EF6:	byt $00
-L5EF7:	byt "12qr"
+L5EF7:	byt $31, $32, $71, $72
 	byt $E6
-	byt "g"
+	byt $67
 	byt $00, $00, $80, $F9, $19
 L5F02:	byt $0F
 L5F03:	byt $00
@@ -11024,17 +11024,17 @@ L5F0A:	byt $00, $00, $00, $01, $01, $01, $01, $03, $03, $03
 	byt $1F, $1F, $1F, $1F, $1F, $1F, $1F, $1F, $1F, $1F
 	byt $1F, $1F, $1F, $0F, $0F, $0F, $0F, $0F, $07, $07
 	byt $03, $01, $00, $1C, $1E
-	byt "??"
+	byt $3F, $3F
 	byt $7F, $7F, $7F, $7F, $7F, $7F, $FF, $FF, $FF, $FF
 	byt $FF, $FF, $FF, $FF, $FF, $7F, $7F, $7F, $7F, $7F
 	byt $7F
-	byt "??"
+	byt $3F, $3F
 	byt $1E, $1C, $00, $00
-	byt "p"
+	byt $70
 	byt $F0, $F8, $F8, $FC, $FC, $FC, $FC, $FC, $FC, $FE
 	byt $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FC, $FC
 	byt $FC, $FC, $FC, $FC, $F8, $F8, $F0
-	byt "p"
+	byt $70
 	byt $00, $00, $80, $C0, $C0, $E0, $E0, $E0, $E0, $E0
 	byt $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0, $F0
 	byt $F0, $F0, $F0, $E0, $E0, $E0, $E0, $E0, $C0, $C0
@@ -11044,15 +11044,15 @@ L5F0A:	byt $00, $00, $00, $01, $01, $01, $01, $03, $03, $03
 	byt $00, $00, $00
 L5FC4:	byt $06
 L5FC5:	byt $00
-L5FC6:	byt "J"
+L5FC6:	byt $4A
 L5FC7:	byt $00
 L5FC8:	byt $80
 L5FC9:	byt $00
-L5FCA:	byt "="
+L5FCA:	byt $3D
 L5FCB:	byt $00
 L5FCC:	byt $03
 L5FCD:	byt $00
-L5FCE:	byt "UVYZefij"
+L5FCE:	byt $55, $56, $59, $5A, $65, $66, $69, $6A
 	byt $95, $96, $99, $9A, $A5, $A6, $A9, $AA
 L5FDE:	byt $03
 L5FDF:	byt $00
@@ -11061,14 +11061,14 @@ L5FE1:	byt $00
 L5FE2:	byt $08
 L5FE3:	byt $00
 L5FE4:	byt $CF
-L5FE5:	byt "]"
+L5FE5:	byt $5D
 L5FE6:	byt $05
 L5FE7:	byt $00
 L5FE8:	byt $08
 L5FE9:	byt $00
 L5FEA:	byt $F8
 L5FEB:	byt $07
-L5FEC:	byt ","
+L5FEC:	byt $2C
 L5FED:	byt $01
 L5FEE:	byt $C0
 L5FEF:	byt $00
@@ -11123,11 +11123,11 @@ L606D:	byt $00
 L606E:	byt $00
 L606F:	byt $00
 L6070:	byt $05, $04
-	byt "3"
+	byt $33
 	byt $03, $94, $94
-	byt "@I"
+	byt $40, $49
 	byt $09, $04, $04, $0A, $04
-	byt "wwpw"
+	byt $77, $77, $70, $77
 	byt $07, $06, $03, $A9, $02, $B2, $B2
-	byt " +"
+	byt $20, $2B
 	byt $0B, $00
