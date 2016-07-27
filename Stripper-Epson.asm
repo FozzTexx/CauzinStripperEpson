@@ -25,6 +25,7 @@ L0906:    byt $00
 L0907:    byt $00
 L0908:    byt $00
 L0909:    byt $00, $00, $00, $00, $00, $00, $00
+
 L0910:    JSR L5A6F
           byt $00, $00, $00
           JSR L0930
@@ -32,19 +33,24 @@ L0910:    JSR L5A6F
 L091B:    LDA #$01
           BNE L0922
           JMP L092F
+
 L0922:    JSR L2686
           LDX #$00
           JSR L1919
           LDX #$00
           JMP L091B
+
 L092F:    RTS
+
 L0930:    JSR L5A6F
           byt $04, $00, $00
           LDA SLOT
           BEQ L093E
           JMP L0943
+
 L093E:    LDA #$10
           STA SLOT
+
 L0943:    LDA SLOT
           STA $1C
           TXA
@@ -63,6 +69,7 @@ L0943:    LDA SLOT
           CMP #$01
           BNE L0968
           JMP L09BE
+
 L0968:    LDA #$0C
           PHA
           LDA #$B7
@@ -108,6 +115,7 @@ L0968:    LDA #$0C
           adr L23F5
           JSR L5A49
           byt $02
+
 L09BE:    TXA
           PHA
           LDA #$01
@@ -194,9 +202,11 @@ L09BE:    TXA
           LDA L6069
           STA $83
           JMP L0A7A
+
 L0A74:    INC $80
           BNE L0A7A
           INC $81
+
 L0A7A:    LDA $80
           CMP L5FE0
           LDA $81
@@ -206,6 +216,7 @@ L0A7A:    LDA $80
           BPL L0A8C
 L0A8A:    BPL L0A8F
 L0A8C:    JMP L0AEB
+
 L0A8F:    CLC
           LDA $82
           STA $1C
@@ -236,6 +247,7 @@ L0A8F:    CLC
           ORA $09
           BEQ L0ACD
           JMP L0AE8
+
 L0ACD:    LDA #$0D
           PHA
           LDA #$09
@@ -251,7 +263,9 @@ L0ACD:    LDA #$0D
           adr L23F5
           JSR L5A49
           byt $02
+
 L0AE8:    JMP L0A74
+
 L0AEB:    JSR L23DF
           LDX #$00
           LDA L5FE5
@@ -554,6 +568,7 @@ L0CB7:    byt $0A, $0A
           byt $0D, $0D, $0D, $00
           byt "         PRESS ANY KEY TO BEGIN"
           byt $00
+
 L1116:    JSR L5A6F
           byt $0A, $00, $00
           LDA L6068
@@ -572,9 +587,11 @@ L1116:    JSR L5A6F
           STX $80
           STX $81
           JMP L1146
+
 L1140:    INC $80
           BNE L1146
           INC $81
+
 L1146:    LDA L5ED3
           STA $1C
           LDA L5ED4
@@ -589,6 +606,7 @@ L1146:    LDA L5ED3
           BPL L1162
 L1160:    BPL L1165
 L1162:    JMP L11A3
+
 L1165:    LDA L5FE7
           PHA
           LDA L5FE6
@@ -620,6 +638,7 @@ L1165:    LDA L5FE7
           ADC L5FE7
           STA $87
           JMP L1140
+
 L11A3:    LDA L5ED3
           STA $1C
           LDA L5ED4
@@ -747,9 +766,11 @@ L11A3:    LDA L5ED3
           STY $80
           STX $81
           JMP L12A4
+
 L129E:    INC $80
           BNE L12A4
           INC $81
+
 L12A4:    LDA $80
           CMP L5FE0
           LDA $81
@@ -759,6 +780,7 @@ L12A4:    LDA $80
           BPL L12B6
 L12B4:    BPL L12B9
 L12B6:    JMP L134B
+
 L12B9:    LDA $83
           PHA
           LDA $82
@@ -837,7 +859,9 @@ L12B9:    LDA $83
           ADC $80
           STA ($1C),Y
           JMP L129E
+
 L134B:    RTS
+
 L134C:    JSR L5A6F
           byt $06, $00, $00
           LDA L6068
@@ -890,10 +914,12 @@ L134C:    JSR L5A6F
 L13B2:    LDA $84
           BNE L13B9
           JMP L1466
+
 L13B9:    LDY #$05
           LDA ($82),Y
           BNE L13C2
           JMP L1456
+
 L13C2:    CLC
           LDA $84
           ADC #$FF
@@ -929,14 +955,18 @@ L13F3:    INC $80
 L13F9:    LDA ($80,X)
           BNE L1400
           JMP L1412
+
 L1400:    LDA ($80,X)
           CMP #$2C
           BEQ L1409
           JMP L140F
+
 L1409:    TXA
           STA ($80,X)
           JMP L1412
+
 L140F:    JMP L13F3
+
 L1412:    LDA L606C
           STA $1C
           LDA L606D
@@ -945,6 +975,7 @@ L1412:    LDA L606C
           LDA ($1C),Y
           BNE L1425
           JMP L1447
+
 L1425:    CLC
           LDA L606C
           ADC #$07
@@ -959,8 +990,10 @@ L1425:    CLC
           CMP $1D
 L143E:    BEQ L1443
           JMP L1447
+
 L1443:    LDA #$FF
           STA ($80,X)
+
 L1447:    INC $80
           BNE L144D
           INC $81
@@ -969,6 +1002,7 @@ L144D:    TXA
           INC $80
           BNE L1456
           INC $81
+
 L1456:    CLC
           LDA $82
           ADC #$46
@@ -977,6 +1011,7 @@ L1456:    CLC
           ADC #$00
           STA $83
           JMP L13B2
+
 L1466:    LDA L6068
           STA $1C
           LDA L6069
@@ -1014,6 +1049,7 @@ L1466:    LDA L6068
           INY
           STA ($1C),Y
           RTS
+
 L14B0:    JSR L5A6F
           byt $08, $00, $00
 L14B6:    LDA L606C
@@ -1024,6 +1060,7 @@ L14B6:    LDA L606C
           LDA ($1C),Y
           BNE L14C9
           JMP L17A9
+
 L14C9:    LDA L5FF4
           STA $86
           LDA L5FF5
@@ -1032,6 +1069,7 @@ L14C9:    LDA L5FF4
           ORA L5DC8
           BEQ L14DE
           JMP L15AE
+
 L14DE:    LDA L5DC9
           STA $1C
           LDA L5DCA
@@ -1057,6 +1095,7 @@ L150B:    LDY #$05
           LDA ($84),Y
           BEQ L1514
           JMP L152C
+
 L1514:    INC L5DC9
           BNE L151C
           INC L5DCA
@@ -1068,6 +1107,7 @@ L151C:    CLC
           ADC #$00
           STA $85
           JMP L150B
+
 L152C:    INC L5DC9
           BNE L1534
           INC L5DCA
@@ -1096,6 +1136,7 @@ L1534:    TXA
           LDA $09
           BMI L1568
           JMP L15A1
+
 L1568:    LDA #$17
           PHA
           LDA #$AA
@@ -1124,12 +1165,14 @@ L1568:    LDA #$17
           adr L23F5
           JSR L5A49
           byt $02
+
 L15A1:    LDY #$02
           LDA ($84),Y
           STA L5DCB
           INY
           LDA ($84),Y
           STA L5DCC
+
 L15AE:    LDY #$09
           LDA ($86),Y
           CMP L5DCB
@@ -1138,6 +1181,7 @@ L15AE:    LDY #$09
           SBC L5DCC
           BCC L15C0
           JMP L15CD
+
 L15C0:    DEY
           LDA ($86),Y
           STA $82
@@ -1145,6 +1189,7 @@ L15C0:    DEY
           LDA ($86),Y
           STA $83
           JMP L15D7
+
 L15CD:    LDA L5DCB
           STA $82
           LDA L5DCC
@@ -1178,6 +1223,7 @@ L15D7:    LDA $83
           BVS L160E
           BMI L160E
           JMP L1647
+
 L160E:    LDA #$17
           PHA
           LDA #$D0
@@ -1206,6 +1252,7 @@ L160E:    LDA #$17
           adr L23F5
           JSR L5A49
           byt $02
+
 L1647:    LDA #$01
           STA ($86,X)
           CLC
@@ -1237,6 +1284,7 @@ L1647:    LDA #$01
           ORA L5DCC
           BEQ L1687
           JMP L1705
+
 L1687:    LDA L5DC8
           PHA
           LDA L5DC7
@@ -1263,6 +1311,7 @@ L1687:    LDA L5DC8
           ORA $19
           BEQ L16BF
           JMP L1705
+
 L16BF:    STX L5DC9
           STX L5DCA
           LDY #$03
@@ -1300,6 +1349,7 @@ L16BF:    STX L5DC9
           LDA ($86),Y
           LDY #$06
           STA ($86),Y
+
 L1705:    LDY #$03
           LDA ($86),Y
           STA $1C
@@ -1316,6 +1366,7 @@ L1705:    LDY #$03
           CMP ($18),Y
           BNE L1727
           JMP L1739
+
 L1727:    INY
           LDA ($86),Y
           STA $1C
@@ -1326,12 +1377,14 @@ L1727:    INY
           LDA ($1C),Y
           ORA #$80
           STA ($1C),Y
+
 L1739:    LDY #$09
           LDA ($86),Y
           INY
           ORA ($86),Y
           BEQ L1745
           JMP L17A6
+
 L1745:    LDY #$05
           LDA ($86),Y
           LDY #$07
@@ -1376,13 +1429,16 @@ L1745:    LDY #$05
           CMP $19
 L17A1:    BNE L17A6
           JMP L17A9
+
 L17A6:    JMP L14B6
+
 L17A9:    RTS
 L17AA:    byt $0A, $0A
           byt "ERROR DURING OPEN, PROGRAM ABORTED"
           byt $0A, $00, $0A, $0A
           byt "ERROR DURING READ, PROGRAM ABORTED"
           byt $0A, $00
+
 L17F6:    JSR L5A6F
           byt $00, $00, $00
           PHA
@@ -1411,6 +1467,7 @@ L17F6:    JSR L5A6F
           JSR L5A49
           byt $02
           RTS
+
 L182E:    JSR L5A6F
           byt $04, $00, $00
           LDY #$0B
@@ -1422,9 +1479,11 @@ L182E:    JSR L5A6F
           STX $82
           STX $83
           JMP L184C
+
 L1846:    INC $82
           BNE L184C
           INC $83
+
 L184C:    LDA $82
           CMP $80
           LDA $83
@@ -1434,6 +1493,7 @@ L184C:    LDA $82
           BPL L185C
 L185A:    BPL L185F
 L185C:    JMP L1872
+
 L185F:    TXA
           PHA
           LDY #$09
@@ -1444,7 +1504,9 @@ L185F:    TXA
           JSR L5A49
           byt $02
           JMP L1846
+
 L1872:    RTS
+
 L1873:    JSR L5A6F
           byt $02, $00, $00
           LDY #$09
@@ -1456,6 +1518,7 @@ L1873:    JSR L5A6F
 L1884:    LDA ($80,X)
           BNE L188B
           JMP L18AD
+
 L188B:    CLC
           LDA $80
           STA $1C
@@ -1474,7 +1537,9 @@ L188B:    CLC
           JSR L5A49
           byt $02
           JMP L1884
+
 L18AD:    RTS
+
 L18AE:    JSR L5A6F
           byt $04, $00, $00
           LDY #$09
@@ -1492,6 +1557,7 @@ L18AE:    JSR L5A6F
 L18C9:    LDA ($82,X)
           BNE L18D0
           JMP L1918
+
 L18D0:    CLC
           LDA $80
           STA $1C
@@ -1517,6 +1583,7 @@ L18D0:    CLC
           CMP #$2C
           BEQ L1901
           JMP L1915
+
 L1901:    CLC
           LDA $80
           ADC #$FF
@@ -1527,8 +1594,11 @@ L1901:    CLC
           LDA #$20
           STA ($80,X)
           JMP L1918
+
 L1915:    JMP L18C9
+
 L1918:    RTS
+
 L1919:    JSR L5A6F
           byt $06, $00, $00
           STX $84
@@ -1544,16 +1614,20 @@ L1919:    JSR L5A6F
           LDA #$5D
           STA $83
           JMP L193D
+
 L193B:    INC $84
+
 L193D:    LDA $84
           CMP #$06
           BCC L1946
           JMP L19A3
+
 L1946:    LDA ($80,X)
           STA $08
           TXA
           STA $09
           JMP L1991
+
 L1950:    CLC
           LDA $82
           STA $1C
@@ -1566,6 +1640,7 @@ L1950:    CLC
           LDA #$20
           STA ($1C,X)
           JMP L19A0
+
 L1968:    CLC
           LDA $82
           STA $1C
@@ -1587,6 +1662,7 @@ L1968:    CLC
           LDA ($18,X)
           STA ($1C,X)
           JMP L19A0
+
 L1991:    JSR L5B0E
           byt $02, $00, $2C, $00
           adr L1950
@@ -1594,6 +1670,7 @@ L1991:    JSR L5B0E
           adr L1950
           adr L1968
 L19A0:    JMP L193B
+
 L19A3:    STX L5D9F
           TXA
           PHA
@@ -1634,6 +1711,7 @@ L19DD:    LDA L606C
           LDA ($1C),Y
           BNE L19F0
           JMP L1A36
+
 L19F0:    JSR L1116
           LDX #$00
           LDA L606C
@@ -1648,8 +1726,10 @@ L19F0:    JSR L1116
           CMP #$01
           BEQ L1A10
           JMP L1A15
+
 L1A10:    JSR L134C
           LDX #$00
+
 L1A15:    JSR L14B0
           LDX #$00
           LDA #$5D
@@ -1665,12 +1745,15 @@ L1A15:    JSR L14B0
           JSR L1E5B
           LDX #$00
           JMP L19DD
+
 L1A36:    RTS
 L1A37:    byt " ENTER A TITLE FOR THESE DATA STRIPS    "
           byt $00
+
 L1A60:    JSR L5A6F
           byt $00, $00, $00
           RTS
+
 L1A67:    JSR L5A6F
           byt $00, $00, $00
           LDY #$09
@@ -1689,6 +1772,7 @@ L1A67:    JSR L5A6F
           ADC #$60
           STA L5ED4
           RTS
+
 L1A8C:    JSR L5A6F
           byt $00, $00, $00
           LDY #$09
@@ -1700,6 +1784,7 @@ L1A8C:    JSR L5A6F
           DEY
           JSR L59CB
           RTS
+
 L1AA2:    JSR L5A6F
           byt $00, $FE, $FF
           LDY #$09
@@ -1742,6 +1827,7 @@ L1AA2:    JSR L5A6F
           JSR L5A49
           byt $02
           RTS
+
 L1AF2:    JSR L5A6F
           byt $02, $00, $00
           LDY #$09
@@ -1762,6 +1848,7 @@ L1AF2:    JSR L5A6F
           ORA $81
           BNE L1B1A
           JMP L1B44
+
 L1B1A:    TXA
           PHA
           LDA #$1B
@@ -1785,7 +1872,9 @@ L1B1A:    TXA
           adr L17F6
           JSR L5A49
           byt $02
+
 L1B44:    RTS
+
 L1B45:    JSR L5A6F
           byt $00, $00, $00
           LDA #$1B
@@ -1806,9 +1895,11 @@ L1B5B:    byt $1B
           byt $1B
           byt "U1"
           byt $00
+
 L1B66:    JSR L5A6F
           byt $00, $00, $00
           RTS
+
 L1B6D:    JSR L5A6F
           byt $0E, $00, $00
           LDY #$0D
@@ -1913,6 +2004,7 @@ L1C16:    CLC
           ORA $1D
           BNE L1C30
           JMP L1C52
+
 L1C30:    CLC
           LDA $8C
           STA $1C
@@ -1931,13 +2023,16 @@ L1C30:    CLC
           JSR L5A49
           byt $02
           JMP L1C16
+
 L1C52:    LDA #$01
           STA $84
           STX $85
           JMP L1C61
+
 L1C5B:    INC $84
           BNE L1C61
           INC $85
+
 L1C61:    LDA $84
           CMP L5E47
           LDA $85
@@ -1947,6 +2042,7 @@ L1C61:    LDA $84
           BPL L1C72
 L1C70:    BPL L1C75
 L1C72:    JMP L1CD9
+
 L1C75:    LDA $8B
           PHA
           LDA $8A
@@ -1981,6 +2077,7 @@ L1C9A:    CLC
           ORA $1D
           BNE L1CB4
           JMP L1CD6
+
 L1CB4:    CLC
           LDA $8C
           STA $1C
@@ -1999,7 +2096,9 @@ L1CB4:    CLC
           JSR L5A49
           byt $02
           JMP L1C9A
+
 L1CD6:    JMP L1C5B
+
 L1CD9:    LDA L5FE9
           PHA
           LDA L5FE8
@@ -2009,6 +2108,7 @@ L1CD9:    LDA L5FE9
           JSR L5A49
           byt $02
           RTS
+
 L1CEB:    JSR L5A6F
           byt $06, $00, $00
           STX L5E47
@@ -2028,8 +2128,10 @@ L1CFE:    CLC
           LDA ($1C,X)
           BNE L1D16
           JMP L1D1C
+
 L1D16:    INC L5E47
           JMP L1CFE
+
 L1D1C:    JSR L1A60
           LDX #$00
           LDY #$0A
@@ -2152,7 +2254,9 @@ L1D1C:    JSR L1A60
           LDA #$5F
           STA $85
           JMP L1E0A
+
 L1E08:    INC $80
+
 L1E0A:    LDA $80
           CMP L5FC4
           TXA
@@ -2162,6 +2266,7 @@ L1E0A:    LDA $80
           BPL L1E1B
 L1E19:    BPL L1E1E
 L1E1B:    JMP L1E4F
+
 L1E1E:    LDA $85
           PHA
           LDA $84
@@ -2186,11 +2291,13 @@ L1E1E:    LDA $85
           ADC L5F07
           STA $85
           JMP L1E08
+
 L1E4F:    RTS
 L1E50:    byt "Page "
           byt $00
           byt " of "
           byt $00
+
 L1E5B:    JSR L5A6F
           byt $0E, $FA, $FF
           JSR L20F7
@@ -2201,7 +2308,9 @@ L1E5B:    JSR L5A6F
           LDA #$5E
           STA $89
           JMP L1E75
+
 L1E73:    INC $80
+
 L1E75:    LDA $80
           CMP L5EF5
           TXA
@@ -2211,6 +2320,7 @@ L1E75:    LDA $80
           BPL L1E86
 L1E84:    BPL L1E89
 L1E86:    JMP L1EBA
+
 L1E89:    LDA $89
           PHA
           LDA $88
@@ -2235,6 +2345,7 @@ L1E89:    LDA $89
           ADC L5EDC
           STA $89
           JMP L1E73
+
 L1EBA:    TXA
           PHA
           PHA
@@ -2276,11 +2387,14 @@ L1EBA:    TXA
           LDA ($1C),Y
           STA $86
           JMP L1F0D
+
 L1F0B:    INC $80
+
 L1F0D:    LDA $80
           CMP L5E47
           BCC L1F17
           JMP L1F7E
+
 L1F17:    LDA $83
           PHA
           LDA $82
@@ -2317,7 +2431,9 @@ L1F42:    CLC
           LDA ($1C,X)
           BNE L1F5A
           JMP L1F5D
+
 L1F5A:    JMP L1F42
+
 L1F5D:    CLC
           LDA $84
           ADC #$FF
@@ -2335,6 +2451,7 @@ L1F5D:    CLC
           ADC #$00
           STA $83
           JMP L1F0B
+
 L1F7E:    JSR L1A60
           LDX #$00
           LDA L606B
@@ -2391,10 +2508,12 @@ L1FE1:    LDA $8A
           SBC $8D
           BCC L1FEE
           JMP L208A
+
 L1FEE:    LDY #$05
           LDA ($8A),Y
           BNE L1FF7
           JMP L207A
+
 L1FF7:    CLC
           LDA $8A
           ADC #$05
@@ -2421,6 +2540,7 @@ L1FF7:    CLC
           CMP L606B
 L2025:    BEQ L202A
           JMP L203A
+
 L202A:    CLC
           LDA $82
           ADC #$28
@@ -2429,6 +2549,7 @@ L202A:    CLC
           ADC #$00
           STA $83
           JMP L207A
+
 L203A:    LDA L606B
           PHA
           LDA L606A
@@ -2463,6 +2584,7 @@ L203A:    LDA L606B
           adr L56BA
           JSR L5A49
           byt $06
+
 L207A:    CLC
           LDA $8A
           ADC #$46
@@ -2471,6 +2593,7 @@ L207A:    CLC
           ADC #$00
           STA $8B
           JMP L1FE1
+
 L208A:    LDA $82
           CMP L606A
           BNE L2096
@@ -2478,6 +2601,7 @@ L208A:    LDA $82
           CMP L606B
 L2096:    BNE L209B
           JMP L20B4
+
 L209B:    LDA L606A
           STA $82
           LDA L606B
@@ -2490,6 +2614,7 @@ L209B:    LDA L606A
           adr L1873
           JSR L5A49
           byt $02
+
 L20B4:    TXA
           PHA
           PHA
@@ -2525,9 +2650,11 @@ L20B4:    TXA
           TXA
           ADC #$00
           RTS
+
 L20F7:    JSR L5A6F
           byt $00, $00, $00
           RTS
+
 L20FE:    JSR L5A6F
           byt $06, $00, $00
           LDY #$0A
@@ -2536,14 +2663,17 @@ L20FE:    JSR L5A6F
           STX $1C
           STX $1D
           JMP L2117
+
 L2111:    LDA #$01
           STA $1C
           STX $1D
+
 L2117:    LDA $1C
           STA $84
           LDA $1C
           BNE L2122
           JMP L2130
+
 L2122:    SEC
           TXA
           LDY #$09
@@ -2553,6 +2683,7 @@ L2122:    SEC
           INY
           SBC ($04),Y
           STA ($04),Y
+
 L2130:    LDY #$0B
           LDA ($04),Y
           STA $82
@@ -2611,9 +2742,11 @@ L2143:    CLC
           BVS L219B
           BPL L219E
 L219B:    JMP L2143
+
 L219E:    LDA $84
           BNE L21A5
           JMP L21BA
+
 L21A5:    CLC
           LDA $82
           STA $1C
@@ -2625,6 +2758,7 @@ L21A5:    CLC
           STA $83
           LDA #$2D
           STA ($1C,X)
+
 L21BA:    CLC
           LDA $82
           STA $1C
@@ -2642,6 +2776,7 @@ L21CE:    LDA $80
           SBC $83
           BCC L21DB
           JMP L220C
+
 L21DB:    LDA ($80,X)
           STA $84
           CLC
@@ -2667,6 +2802,7 @@ L21DB:    LDA ($80,X)
           LDA $84
           STA ($1C,X)
           JMP L21CE
+
 L220C:    LDY #$0B
           LDA ($04),Y
           STA $08
@@ -2674,6 +2810,7 @@ L220C:    LDY #$0B
           LDA ($04),Y
           STA $09
           RTS
+
 L2218:    JSR L5A6F
           byt $00, $FF, $FF
           JSR L2401
@@ -2685,6 +2822,7 @@ L2218:    JSR L5A6F
           CMP #$03
           BEQ L2232
           JMP L2240
+
 L2232:    TXA
           PHA
           LDA #$02
@@ -2693,12 +2831,14 @@ L2232:    TXA
           adr L23F5
           JSR L5A49
           byt $02
+
 L2240:    LDY #$FF
           LDA ($06),Y
           STA $08
           TXA
           STA $09
           RTS
+
 L224A:    JSR L5A6F
           byt $06, $00, $00
           LDY #$09
@@ -2721,6 +2861,7 @@ L224A:    JSR L5A6F
           ORA $83
           BNE L2276
           JMP L2283
+
 L2276:    CLC
           LDA $82
           ADC #$FF
@@ -2728,6 +2869,7 @@ L2276:    CLC
           LDA $83
           ADC #$FF
           STA $83
+
 L2283:    JSR L2401
           LDX #$00
           LDA $08
@@ -2736,17 +2878,20 @@ L2283:    JSR L2401
           CMP #$0D
           BNE L2295
           JMP L232A
+
 L2295:    LDA ($84,X)
           STA $08
           TXA
           STA $09
           JMP L2318
+
 L229F:    LDA $80
           CMP $84
           LDA $81
           SBC $85
           BCC L22AC
           JMP L22CE
+
 L22AC:    CLC
           LDA $84
           ADC #$FF
@@ -2765,15 +2910,19 @@ L22BF:    LDA #$23
           adr L235E
           JSR L5A49
           byt $02
+
 L22CE:    JMP L2327
+
 L22D1:    LDA $82
           ORA $83
           BNE L22DA
           JMP L2307
+
 L22DA:    LDA ($84,X)
           CMP #$20
           BCS L22E3
           JMP L2304
+
 L22E3:    TXA
           PHA
           LDA ($84,X)
@@ -2792,7 +2941,9 @@ L22F7:    CLC
           LDA $83
           ADC #$FF
           STA $83
+
 L2304:    JMP L2315
+
 L2307:    TXA
           PHA
           LDA #$07
@@ -2802,6 +2953,7 @@ L2307:    TXA
           JSR L5A49
           byt $02
 L2315:    JMP L2327
+
 L2318:    JSR L5B0E
           byt $02, $00, $08, $00
           adr L229F
@@ -2809,6 +2961,7 @@ L2318:    JSR L5B0E
           adr L229F
           adr L22D1
 L2327:    JMP L2283
+
 L232A:    TXA
           STA ($84,X)
           LDA $80
@@ -2819,6 +2972,7 @@ L232A:    TXA
 L2336:    byt $08
           byt " "
           byt $08, $00
+
 L233A:    JSR L5A6F
           byt $00, $00, $00
           LDA #$02
@@ -2838,6 +2992,7 @@ L233A:    JSR L5A6F
           JSR L5A49
           byt $02
           RTS
+
 L235E:    JSR L5A6F
           byt $02, $00, $00
           LDY #$09
@@ -2849,6 +3004,7 @@ L235E:    JSR L5A6F
 L236F:    LDA ($80,X)
           BNE L2376
           JMP L2398
+
 L2376:    CLC
           LDA $80
           STA $1C
@@ -2867,7 +3023,9 @@ L2376:    CLC
           JSR L5A49
           byt $02
           JMP L236F
+
 L2398:    RTS
+
 L2399:    JSR L5A6F
           byt $00, $F9, $FF
           CLC
@@ -2907,31 +3065,39 @@ L2399:    JSR L5A6F
           JSR L5A49
           byt $02
           RTS
+
 L23DF:    JMP HOME
+
 L23E2:    JMP CLREOL
 L23E5:    byt "LB"
           byt $FC
+
 L23E8:    LDY #$02
           LDA ($02),Y
           STA $24
           LDY #$00
           LDA ($02),Y
           JMP TABV
+
 L23F5:    JMP (SOFTEV)
+
 L23F8:    LDY #$00
           LDA ($02),Y
           ORA #$80
           JMP COUT1
+
 L2401:    JSR RDKEY
 L2404:    AND #$7F
           STA $08
           LDX #$00
           STX $09
           RTS
+
 L240D:    LDA KBD
           BPL L240D
           STA KBDSTB
           BMI L2404
+
 L2417:    JSR L5A6F
           byt $00, $FC, $FE
           TYA
@@ -2971,6 +3137,7 @@ L2417:    JSR L5A6F
           TXA
           STA $09
           JMP L24FC
+
 L245D:    CLC
           LDA #$FE
           ADC $06
@@ -2987,6 +3154,7 @@ L245D:    CLC
           ADC #$00
           STA $09
           RTS
+
 L247A:    CLC
           LDA #$FC
           ADC $06
@@ -3003,6 +3171,7 @@ L247A:    CLC
           ADC #$00
           STA $09
           RTS
+
 L2497:    LDA #$01
           PHA
           TXA
@@ -3039,6 +3208,7 @@ L2497:    LDA #$01
           SBC $09
           BCC L24D6
           JMP L24F0
+
 L24D6:    CLC
           INY
           LDA ($06),Y
@@ -3053,6 +3223,7 @@ L24D6:    CLC
           LDY #$FF
           STA ($06),Y
           JMP L2497
+
 L24F0:    LDY #$FE
           LDA ($06),Y
           STA $08
@@ -3060,6 +3231,7 @@ L24F0:    LDY #$FE
           LDA ($06),Y
           STA $09
           RTS
+
 L24FC:    JSR L5B0E
           byt $03, $00, $04, $00
           adr L245D
@@ -3069,6 +3241,7 @@ L24FC:    JSR L5B0E
           adr L247A
           adr L2497
           RTS
+
 L2510:    JSR L5A6F
           byt $00, $00, $00
           LDY #$09
@@ -3077,21 +3250,26 @@ L2510:    JSR L5A6F
           TXA
           STA $09
           JMP L253C
+
 L2522:    LDA #$01
           STA $08
           STX $09
           RTS
+
 L2529:    LDA #$04
           STA $08
           STX $09
           RTS
+
 L2530:    LDA #$02
           STA $08
           STX $09
           RTS
+
 L2537:    STX $08
           STX $09
           RTS
+
 L253C:    JSR L589C
           byt $00, $00, $05, $00
           adr L2537
@@ -3101,6 +3279,7 @@ L253C:    JSR L589C
           adr L2537
           adr L2530
           RTS
+
 L2550:    JSR L5A6F
           byt $04, $00, $00
           LDY #$09
@@ -3134,9 +3313,11 @@ L2550:    JSR L5A6F
           LDA $09
           BMI L258F
           JMP L2594
+
 L258F:    STX $08
           STX $09
           RTS
+
 L2594:    TXA
           PHA
           LDA #$02
@@ -3205,6 +3386,7 @@ L2600:    byt "NORMAL"
           byt $00
           byt "  LOW "
           byt $00
+
 L2615:    JSR L5A6F
           byt $00, $00, $00
           LDA L5F08
@@ -3214,9 +3396,11 @@ L2615:    JSR L5A6F
           CMP #$00
 L2627:    BEQ L262C
           JMP L2634
+
 L262C:    LDA #$05
           STA L5E55
           JMP L2639
+
 L2634:    LDA #$04
           STA L5E55
 L2639:    LDA L5E55
@@ -3247,6 +3431,7 @@ L2639:    LDA L5E55
           RTS
 L266A:    byt "DATA STRIP PRINTING PROGRAM"
           byt $00
+
 L2686:    JSR L5A6F
           byt $00, $FF, $FF
           PHA
@@ -3299,6 +3484,7 @@ L2686:    JSR L5A6F
 L26E9:    LDA L5E53
           BEQ L26F1
           JMP L2754
+
 L26F1:    JSR L2755
           LDX #$00
           JSR L240D
@@ -3308,6 +3494,7 @@ L26F1:    JSR L2755
           STA ($06),Y
           STX $7B
           JMP L273A
+
 L2706:    TXA
           PHA
           LDA #$01
@@ -3317,6 +3504,7 @@ L2706:    TXA
           JSR L5A49
           byt $02
           JMP L2751
+
 L2717:    LDA #$FF
           PHA
           PHA
@@ -3325,6 +3513,7 @@ L2717:    LDA #$FF
           JSR L5A49
           byt $02
           JMP L2751
+
 L2727:    TXA
           PHA
           LDY #$FF
@@ -3335,6 +3524,7 @@ L2727:    TXA
           JSR L5A49
           byt $02
           JMP L2751
+
 L273A:    JSR L5B0E
           byt $04, $00, $08, $00
           adr L2717
@@ -3346,7 +3536,9 @@ L273A:    JSR L5B0E
           adr L2706
           adr L2727
 L2751:    JMP L26E9
+
 L2754:    RTS
+
 L2755:    JSR L5A6F
           byt $08, $D7, $FF
           LDA L606C
@@ -3379,6 +3571,7 @@ L2755:    JSR L5A6F
           CMP $82
           BCC L2794
           JMP L27AB
+
 L2794:    CLC
           LDA #$D8
           ADC $06
@@ -3391,10 +3584,12 @@ L2794:    CLC
           LDA $1D
           STA $81
           JMP L27DF
+
 L27AB:    LDA $82
           CMP #$0A
           BCC L27B4
           JMP L27CB
+
 L27B4:    CLC
           LDA #$DA
           ADC $06
@@ -3407,6 +3602,7 @@ L27B4:    CLC
           LDA $1D
           STA $81
           JMP L27DF
+
 L27CB:    CLC
           LDA #$D9
           ADC $06
@@ -3440,6 +3636,7 @@ L27DF:    LDA $81
           CMP #$0A
           BCC L2808
           JMP L281F
+
 L2808:    CLC
           LDA #$EE
           ADC $06
@@ -3452,6 +3649,7 @@ L2808:    CLC
           LDA $1D
           STA $81
           JMP L2833
+
 L281F:    CLC
           LDA #$ED
           ADC $06
@@ -3521,13 +3719,16 @@ L2833:    LDA $81
           BVS L289A
           BMI L289A
           JMP L28F5
+
 L289A:    LDA L5E54
           CMP #$04
           BEQ L28A4
           JMP L28AB
+
 L28A4:    LDA #$3F
           STA $32
           JMP L28AF
+
 L28AB:    LDA #$FF
           STA $32
 L28AF:    LDA #$2B
@@ -3567,13 +3768,16 @@ L28AF:    LDA #$2B
           adr L23F8
           JSR L5A49
           byt $02
+
 L28F5:    LDA L5E54
           CMP #$05
           BEQ L28FF
           JMP L2906
+
 L28FF:    LDA #$3F
           STA $32
           JMP L290A
+
 L2906:    LDA #$FF
           STA $32
 L290A:    LDA #$2B
@@ -3588,6 +3792,7 @@ L290A:    LDA #$2B
           LDA ($86),Y
           BNE L2922
           JMP L2934
+
 L2922:    LDA #$2B
           PHA
           LDA #$37
@@ -3597,6 +3802,7 @@ L2922:    LDA #$2B
           JSR L5A49
           byt $02
           JMP L2943
+
 L2934:    LDA #$2B
           PHA
           LDA #$3B
@@ -3609,9 +3815,11 @@ L2943:    LDA L5E54
           CMP #$06
           BEQ L294D
           JMP L2954
+
 L294D:    LDA #$3F
           STA $32
           JMP L2958
+
 L2954:    LDA #$FF
           STA $32
 L2958:    LDA #$2B
@@ -3626,9 +3834,11 @@ L2958:    LDA #$2B
           CMP #$07
           BEQ L2971
           JMP L2978
+
 L2971:    LDA #$3F
           STA $32
           JMP L297C
+
 L2978:    LDA #$FF
           STA $32
 L297C:    LDA #$2B
@@ -3678,6 +3888,7 @@ L297C:    LDA #$2B
           ADC #$00
           STA $85
           JMP L29E6
+
 L29D7:    INC $82
           CLC
           LDA $84
@@ -3686,10 +3897,12 @@ L29D7:    INC $82
           LDA $85
           ADC #$00
           STA $85
+
 L29E6:    LDA #$0A
           CMP $82
           BCS L29EF
           JMP L2AB9
+
 L29EF:    CLC
           LDA $82
           ADC #$08
@@ -3698,9 +3911,11 @@ L29EF:    CLC
           CMP $1C
           BEQ L2A00
           JMP L2A07
+
 L2A00:    LDA #$3F
           STA $32
           JMP L2A0B
+
 L2A07:    LDA #$FF
           STA $32
 L2A0B:    CLC
@@ -3749,6 +3964,7 @@ L2A0B:    CLC
           CMP #$0A
           BCC L2A5E
           JMP L2A70
+
 L2A5E:    LDA #$2B
           PHA
           LDA #$63
@@ -3758,6 +3974,7 @@ L2A5E:    LDA #$2B
           JSR L5A49
           byt $02
           JMP L2A7F
+
 L2A70:    LDA #$2B
           PHA
           LDA #$66
@@ -3770,6 +3987,7 @@ L2A7F:    LDY #$05
           LDA ($84),Y
           BNE L2A88
           JMP L2AA7
+
 L2A88:    CLC
           LDA $84
           ADC #$05
@@ -3786,6 +4004,7 @@ L2A88:    CLC
           JSR L5A49
           byt $02
           JMP L2AB6
+
 L2AA7:    LDA #$2B
           PHA
           LDA #$68
@@ -3795,13 +4014,16 @@ L2AA7:    LDA #$2B
           JSR L5A49
           byt $02
 L2AB6:    JMP L29D7
+
 L2AB9:    LDA L5E54
           CMP #$14
           BEQ L2AC3
           JMP L2ACA
+
 L2AC3:    LDA #$3F
           STA $32
           JMP L2ACE
+
 L2ACA:    LDA #$FF
           STA $32
 L2ACE:    LDA #$2B
@@ -3837,6 +4059,7 @@ L2AE2:    byt "(   ) DATA STRIPS ON (  ) PAGES"
           byt $00, $0D, $0D
           byt "PRINT"
           byt $00
+
 L2B93:    JSR L5A6F
           byt $04, $00, $00
           TXA
@@ -3911,6 +4134,7 @@ L2BFE:    byt $00
           byt $00, $0D
           byt "   USE ARROW KEYS TO SELECT FUNCTION"
           byt $00
+
 L2D09:    JSR L5A6F
           byt $04, $00, $00
           PHA
@@ -3932,13 +4156,17 @@ L2D09:    JSR L5A6F
           ORA ($04),Y
           BNE L2D33
           JMP L2D60
+
 L2D33:    STX $82
           JMP L2D3A
+
 L2D38:    INC $82
+
 L2D3A:    LDA $82
           CMP #$28
           BCC L2D43
           JMP L2D5D
+
 L2D43:    CLC
           LDA $80
           STA $1C
@@ -3952,14 +4180,19 @@ L2D43:    CLC
           AND #$3F
           STA ($1C,X)
           JMP L2D38
+
 L2D5D:    JMP L2D8A
+
 L2D60:    STX $82
           JMP L2D67
+
 L2D65:    INC $82
+
 L2D67:    LDA $82
           CMP #$28
           BCC L2D70
           JMP L2D8A
+
 L2D70:    CLC
           LDA $80
           STA $1C
@@ -3973,7 +4206,9 @@ L2D70:    CLC
           ORA #$80
           STA ($1C,X)
           JMP L2D65
+
 L2D8A:    RTS
+
 L2D8B:    JSR L5A6F
           byt $00, $00, $00
           PHA
@@ -3991,10 +4226,12 @@ L2D8B:    JSR L5A6F
           CMP #$08
           BNE L2DB1
           JMP L2DBB
+
 L2DB1:    LDA L5E54
           CMP #$13
           BEQ L2DBB
           JMP L2DC6
+
 L2DBB:    CLC
           LDA L5E54
           LDY #$09
@@ -4004,18 +4241,23 @@ L2DC6:    LDA #$14
           CMP L5E54
           BCC L2DD0
           JMP L2DD9
+
 L2DD0:    LDA L5E55
           STA L5E54
           JMP L2DE9
+
 L2DD9:    LDA L5E54
           CMP L5E55
           BCC L2DE4
           JMP L2DE9
+
 L2DE4:    LDA #$14
           STA L5E54
+
 L2DE9:    JSR L2B93
           LDX #$00
           RTS
+
 L2DEF:    JSR L5A6F
           byt $04, $00, $00
           LDA #$82
@@ -4062,20 +4304,24 @@ L2E37:    JSR L2218
           CMP #$0D
           BNE L2E49
           JMP L2EDA
+
 L2E49:    LDA $80
           CMP #$7F
           BNE L2E52
           JMP L2E5B
+
 L2E52:    LDA $80
           CMP #$08
           BEQ L2E5B
           JMP L2E86
+
 L2E5B:    LDA #$82
           CMP $82
           LDA #$5E
           SBC $83
           BCC L2E68
           JMP L2E86
+
 L2E68:    CLC
           LDA $82
           ADC #$FF
@@ -4092,10 +4338,12 @@ L2E68:    CLC
           JSR L5A49
           byt $02
           JMP L2ED7
+
 L2E86:    LDA $80
           CMP #$20
           BCS L2E8F
           JMP L2ED7
+
 L2E8F:    CLC
           LDA $82
           STA $1C
@@ -4125,14 +4373,18 @@ L2E8F:    CLC
           SBC $83
           BCS L2EC9
           JMP L2EDA
+
 L2EC9:    LDA $80
           CMP #$04
           BEQ L2ED2
           JMP L2ED7
+
 L2ED2:    STX $08
           STX $09
           RTS
+
 L2ED7:    JMP L2E37
+
 L2EDA:    TXA
           STA ($82,X)
           LDA $82
@@ -4142,14 +4394,17 @@ L2EDA:    TXA
           CMP #$5E
 L2EE7:    BEQ L2EEC
           JMP L2EF1
+
 L2EEC:    STX $08
           STX $09
           RTS
+
 L2EF1:    LDA #$82
           STA $08
           LDA #$5E
           STA $09
           RTS
+
 L2EFA:    JSR L5A6F
           byt $04, $00, $00
           PHA
@@ -4179,11 +4434,13 @@ L2EFA:    JSR L5A6F
           TXA
           STA $09
           JMP L3151
+
 L2F36:    LDY #$09
           LDA ($04),Y
           CMP #$0D
           BEQ L2F41
           JMP L2F5C
+
 L2F41:    INC L5E52
           LDA L5E52
           CMP L5F08
@@ -4194,7 +4451,9 @@ L2F41:    INC L5E52
           BMI L2F56
 L2F54:    BMI L2F59
 L2F56:    JMP L2F5C
+
 L2F59:    STX L5E52
+
 L2F5C:    TXA
           PHA
           LDA L5E52
@@ -4215,6 +4474,7 @@ L2F5C:    TXA
           ORA $09
           BEQ L2F81
           JMP L2FB9
+
 L2F81:    LDA L5F08
           CMP #$01
           BNE L2F8D
@@ -4222,8 +4482,10 @@ L2F81:    LDA L5F08
           CMP #$00
 L2F8D:    BEQ L2F92
           JMP L2F98
+
 L2F92:    STX L5E52
           JMP L2F9D
+
 L2F98:    LDA #$01
           STA L5E52
 L2F9D:    TXA
@@ -4242,44 +4504,55 @@ L2F9D:    TXA
           adr L3167
           JSR L5A49
           byt $04
+
 L2FB9:    JMP L3166
+
 L2FBC:    LDY #$09
           LDA ($04),Y
           CMP #$59
           BEQ L2FC7
           JMP L2FD0
+
 L2FC7:    LDA #$01
           LDY #$06
           STA ($82),Y
           JMP L2FF6
+
 L2FD0:    LDY #$09
           LDA ($04),Y
           CMP #$4E
           BEQ L2FDB
           JMP L2FE3
+
 L2FDB:    TXA
           LDY #$06
           STA ($82),Y
           JMP L2FF6
+
 L2FE3:    LDY #$09
           LDA ($04),Y
           CMP #$0D
           BEQ L2FEE
           JMP L2FF6
+
 L2FEE:    LDY #$06
           LDA ($82),Y
           EOR #$01
           STA ($82),Y
+
 L2FF6:    JMP L3166
+
 L2FF9:    LDY #$09
           LDA ($04),Y
           CMP #$31
           BNE L3004
           JMP L300D
+
 L3004:    LDA ($04),Y
           CMP #$32
           BEQ L300D
           JMP L3051
+
 L300D:    STX $22
           LDA #$FF
           STA $32
@@ -4317,11 +4590,13 @@ L300D:    STX $22
           JSR L2B93
           LDX #$00
 L3051:    JMP L3166
+
 L3054:    LDY #$09
           LDA ($04),Y
           CMP #$0D
           BEQ L305F
           JMP L308A
+
 L305F:    INC CARD
           LDA CARD
           STA $1C
@@ -4341,8 +4616,11 @@ L305F:    INC CARD
           ORA ($18),Y
           BEQ L3087
           JMP L308A
+
 L3087:    STX CARD
+
 L308A:    JMP L3166
+
 L308D:    CLC
           LDA L5E54
           ADC #$F7
@@ -4372,10 +4650,12 @@ L308D:    CLC
           CMP #$04
           BEQ L30C6
           JMP L3104
+
 L30C6:    LDY #$05
           LDA ($80),Y
           BNE L30CF
           JMP L3101
+
 L30CF:    TXA
           PHA
           PHA
@@ -4407,16 +4687,20 @@ L30CF:    TXA
           adr L3167
           JSR L5A49
           byt $04
+
 L3101:    JMP L313B
+
 L3104:    LDY #$05
           LDA ($80),Y
           BEQ L310D
           JMP L313B
+
 L310D:    LDY #$09
           LDA ($04),Y
           CMP #$20
           BCS L3118
           JMP L313B
+
 L3118:    LDA $81
           PHA
           LDA $80
@@ -4437,15 +4721,20 @@ L3118:    LDA $81
           adr L3167
           JSR L5A49
           byt $04
+
 L313B:    JMP L3166
+
 L313E:    LDY #$09
           LDA ($04),Y
           CMP #$50
           BEQ L3149
           JMP L314E
+
 L3149:    LDA #$01
           STA L5E53
+
 L314E:    JMP L3166
+
 L3151:    JSR L589C
           byt $FF, $FF, $06, $00
           adr L3166
@@ -4456,6 +4745,7 @@ L3151:    JSR L589C
           adr L308D
           adr L313E
 L3166:    RTS
+
 L3167:    JSR L5A6F
           byt $0E, $FC, $FF
           LDY #$0B
@@ -4484,6 +4774,7 @@ L3167:    JSR L5A6F
           ORA ($04),Y
           BNE L31A1
           JMP L31FA
+
 L31A1:    LDA ($04),Y
           PHA
           DEY
@@ -4516,12 +4807,14 @@ L31A1:    LDA ($04),Y
           ORA $09
           BEQ L31DC
           JMP L31E6
+
 L31DC:    TXA
           LDY #$05
           STA ($80),Y
           STX $08
           STX $09
           RTS
+
 L31E6:    CLC
           LDY #$01
           LDA ($8A),Y
@@ -4533,6 +4826,7 @@ L31E6:    CLC
           STA $1D
           LDA $1C
           STA $82
+
 L31FA:    LDA #$02
           LDY #$FC
           STA ($06),Y
@@ -4545,6 +4839,7 @@ L31FA:    LDA #$02
           STA ($06),Y
           STX $86
           JMP L321C
+
 L320F:    CLC
           LDA $88
           ADC #$46
@@ -4552,14 +4847,17 @@ L320F:    CLC
           LDA $89
           ADC #$00
           STA $89
+
 L321C:    LDA $86
           CMP $82
           BCC L3225
           JMP L32E5
+
 L3225:    LDY #$05
           LDA ($88),Y
           BNE L322E
           JMP L32E2
+
 L322E:    INC $86
           TXA
           PHA
@@ -4588,6 +4886,7 @@ L322E:    INC $86
           ORA $09
           BEQ L3262
           JMP L3289
+
 L3262:    CLC
           LDA $88
           ADC #$05
@@ -4608,6 +4907,7 @@ L3262:    CLC
           LDA $09
           STA $8D
           JMP L32A3
+
 L3289:    CLC
           LDA $88
           ADC #$05
@@ -4657,7 +4957,9 @@ L32A3:    CLC
           LDA ($06),Y
           ADC $1B
           STA ($06),Y
+
 L32E2:    JMP L320F
+
 L32E5:    LDY #$FC
           LDA ($06),Y
           CMP #$02
@@ -4675,12 +4977,14 @@ L32E5:    LDY #$FC
           CMP #$00
 L3300:    BEQ L3305
           JMP L3310
+
 L3305:    TXA
           LDY #$03
           STA ($8A),Y
           DEY
           STA ($8A),Y
           JMP L3423
+
 L3310:    LDA L5ED3
           STA $1C
           LDA L5ED4
@@ -4755,17 +5059,21 @@ L3373:    STY $12
           BPL L339B
 L3399:    BPL L339E
 L339B:    JMP L33A0
+
 L339E:    INC $86
+
 L33A0:    LDA #$7F
           CMP $86
           BCC L33A9
           JMP L33D8
+
 L33A9:    LDY #$09
           LDA ($04),Y
           INY
           ORA ($04),Y
           BNE L33B5
           JMP L33D3
+
 L33B5:    CLC
           LDY #$01
           LDA ($8A),Y
@@ -4784,9 +5092,11 @@ L33B5:    CLC
           adr L3167
           JSR L5A49
           byt $04
+
 L33D3:    STX $08
           STX $09
           RTS
+
 L33D8:    LDA $86
           LDY #$02
           STA ($8A),Y
@@ -4819,7 +5129,9 @@ L33D8:    LDA $86
           BPL L3418
 L3416:    BPL L341B
 L3418:    JMP L341D
+
 L341B:    INC $82
+
 L341D:    LDA $82
           LDY #$03
           STA ($8A),Y
@@ -4827,6 +5139,7 @@ L3423:    LDA #$01
           STA $08
           STX $09
           RTS
+
 L342A:    LDY #$00
           LDA ($02),Y
           PHA
@@ -4838,6 +5151,7 @@ L3432:    LDA $C080,Y
           PLA
           STA $C080,Y
           RTS
+
 L3440:    LDY #$00
           LDA ($02),Y
           PHA
@@ -4853,6 +5167,7 @@ L3448:    LDA $C080,Y
           RTS
 L345C:    byt $00
 L345D:    byt $A0, $00
+
 L345F:    LDA ($02),Y
           PHA
           LDY SLOT
@@ -4896,11 +5211,13 @@ L34B8:    ROR $08
           BNE L34B8
           CLC
           RTS
+
 L34BF:    LDA $C088,Y
           AND #$7F
           CMP #$13
           BEQ L34C9
           RTS
+
 L34C9:    LDA $C089,Y
           AND #$08
           BEQ L34C9
@@ -4917,6 +5234,7 @@ L34DA:    byt "l"
           byt $00
           byt "SUPER SERIAL"
           byt $00
+
 L3504:    CLC
           LDY #$03
           LDA ($02),Y
@@ -4959,6 +5277,7 @@ L353C:    STA $09
           STA $08
           INC $08
           RTS
+
 L3549:    LDY #$01
           LDA ($02),Y
           STA $0D
@@ -4982,6 +5301,7 @@ L3559:    EOR ($0C),Y
           LSR
           STA $08
           RTS
+
 L356E:    JSR L5A6F
           byt $0E, $FE, $FF
           STX L5EAE
@@ -4994,7 +5314,9 @@ L356E:    JSR L5A6F
           LDX #$00
           STX $82
           JMP L3592
+
 L3590:    INC $82
+
 L3592:    LDA $82
           CMP L5FE0
           TXA
@@ -5004,6 +5326,7 @@ L3592:    LDA $82
           BPL L35A3
 L35A1:    BPL L35A6
 L35A3:    JMP L3625
+
 L35A6:    LDA L5FF4
           STA $1C
           LDA L5FF5
@@ -5011,6 +5334,7 @@ L35A6:    LDA L5FF4
           LDA ($1C,X)
           BNE L35B7
           JMP L3625
+
 L35B7:    CLC
           LDA L5FF4
           STA $1C
@@ -5062,6 +5386,7 @@ L35B7:    CLC
           LDY #$05
           STA ($1C),Y
           JMP L3590
+
 L3625:    LDA L6068
           STA $1C
           LDA L6069
@@ -5069,6 +5394,7 @@ L3625:    LDA L6068
           LDA ($1C,X)
           BNE L3636
           JMP L39EF
+
 L3636:    LDA L6068
           STA L5FF4
           LDA L6069
@@ -5109,6 +5435,7 @@ L367F:    LDA L5FF4
           LDA ($1C,X)
           BNE L3690
           JMP L37CC
+
 L3690:    LDA L5FC8
           STA L5EAD
           LDA L5EAE
@@ -5117,7 +5444,9 @@ L3690:    LDA L5FC8
           STA L5EAB
           STX $84
           JMP L36A9
+
 L36A7:    INC $84
+
 L36A9:    LDA $84
           CMP L5FE2
           TXA
@@ -5127,12 +5456,14 @@ L36A9:    LDA $84
           BPL L36BA
 L36B8:    BPL L36BD
 L36BA:    JMP L37A9
+
 L36BD:    LDA L5EAA
           CMP L5F02
           LDA L5EAB
           SBC L5F03
           BCS L36CE
           JMP L377F
+
 L36CE:    LDA $89
           PHA
           LDA $88
@@ -5155,10 +5486,12 @@ L36CE:    LDA $89
           LDA L5EAC
           BEQ L36F7
           JMP L3710
+
 L36F7:    LDA L0905
           CMP #$02
           BNE L3701
           JMP L3710
+
 L3701:    CLC
           LDA $80
           ADC L5FF0
@@ -5166,6 +5499,7 @@ L3701:    CLC
           LDA $81
           ADC L5FF1
           STA $81
+
 L3710:    CLC
           LDA $88
           ADC L5FF2
@@ -5188,6 +5522,7 @@ L371F:    CLC
           SBC $8D
           BCC L373D
           JMP L377F
+
 L373D:    CLC
           LDA $80
           ADC L5FCC
@@ -5201,7 +5536,9 @@ L373D:    CLC
           LDA #$01
           STA $82
           JMP L375B
+
 L3759:    INC $82
+
 L375B:    LDA $82
           CMP L5FCC
           TXA
@@ -5211,13 +5548,16 @@ L375B:    LDA $82
           BPL L376C
 L376A:    BPL L376F
 L376C:    JMP L377C
+
 L376F:    INC $80
           BNE L3775
           INC $81
 L3775:    LDA $8A
           STA ($80,X)
           JMP L3759
+
 L377C:    JMP L371F
+
 L377F:    CLC
           LDA L5EAA
           ADC L5FDE
@@ -5236,6 +5576,7 @@ L377F:    CLC
           LDA $08
           STA L5EAD
           JMP L36A7
+
 L37A9:    CLC
           LDA $88
           ADC L5FEE
@@ -5251,6 +5592,7 @@ L37A9:    CLC
           ADC #$00
           STA L5FF5
           JMP L367F
+
 L37CC:    CLC
           LDA $80
           ADC #$FF
@@ -5261,7 +5603,9 @@ L37CC:    CLC
           LDA ($80,X)
           BEQ L37E0
           JMP L37E3
+
 L37E0:    JMP L37CC
+
 L37E3:    SEC
           LDA $80
           SBC L606A
@@ -5273,16 +5617,20 @@ L37E3:    SEC
           ORA L5EAB
           BNE L37FF
           JMP L39EC
+
 L37FF:    LDA L0905
           CMP #$02
           BNE L3809
           JMP L3819
+
 L3809:    LDA L0905
           BEQ L3811
           JMP L388A
+
 L3811:    LDA L5EAC
           BEQ L3819
           JMP L388A
+
 L3819:    LDA L5EAB
           PHA
           LDA L5EAA
@@ -5305,6 +5653,7 @@ L3819:    LDA L5EAB
           INY
           STA ($06),Y
           JMP L3859
+
 L3849:    CLC
           LDY #$FE
           LDA ($06),Y
@@ -5314,12 +5663,14 @@ L3849:    CLC
           LDA ($06),Y
           ADC #$FF
           STA ($06),Y
+
 L3859:    LDY #$FE
           LDA ($06),Y
           INY
           ORA ($06),Y
           BNE L3865
           JMP L3887
+
 L3865:    CLC
           LDA $80
           STA $1C
@@ -5338,14 +5689,18 @@ L3865:    CLC
           JSR L5A49
           byt $02
           JMP L3849
+
 L3887:    JMP L39C3
+
 L388A:    LDA L5EAA
           AND #$01
           BNE L3894
           JMP L389C
+
 L3894:    INC L5EAA
           BNE L389C
           INC L5EAB
+
 L389C:    LDA L5EAB
           PHA
           LDA L5EAA
@@ -5375,6 +5730,7 @@ L389C:    LDA L5EAB
           INY
           STA ($06),Y
           JMP L38F0
+
 L38DA:    INC $80
           BNE L38E0
           INC $81
@@ -5387,12 +5743,14 @@ L38E0:    CLC
           LDA ($06),Y
           ADC #$FF
           STA ($06),Y
+
 L38F0:    LDY #$FE
           LDA ($06),Y
           INY
           ORA ($06),Y
           BNE L38FC
           JMP L3929
+
 L38FC:    CLC
           LDA $80
           STA $1C
@@ -5417,6 +5775,7 @@ L38FC:    CLC
           JSR L5A49
           byt $02
           JMP L38DA
+
 L3929:    TXA
           PHA
           PHA
@@ -5453,6 +5812,7 @@ L3929:    TXA
           INY
           STA ($06),Y
           JMP L3989
+
 L3973:    INC $80
           BNE L3979
           INC $81
@@ -5465,12 +5825,14 @@ L3979:    CLC
           LDA ($06),Y
           ADC #$FF
           STA ($06),Y
+
 L3989:    LDY #$FE
           LDA ($06),Y
           INY
           ORA ($06),Y
           BNE L3995
           JMP L39C3
+
 L3995:    TXA
           PHA
           PHA
@@ -5496,6 +5858,7 @@ L3995:    TXA
           JSR L5A49
           byt $02
           JMP L3973
+
 L39C3:    CLC
           LDA L5EAE
           ADC L5FE8
@@ -5513,8 +5876,11 @@ L39C3:    CLC
           byt $02
           JSR L1B66
           LDX #$00
+
 L39EC:    JMP L3625
+
 L39EF:    RTS
+
 L39F0:    JSR L5A6F
           byt $0E, $00, $00
           LDY #$09
@@ -5590,16 +5956,19 @@ L39F0:    JSR L5A6F
           SBC ($1C),Y
           BCS L3A8C
           JMP L3ACC
+
 L3A8C:    LDY #$0D
           LDA ($04),Y
           BEQ L3A95
           JMP L3AA2
+
 L3A95:    LDA L5FF4
           STA $1C
           LDA L5FF5
           STA $1D
           TXA
           STA ($1C,X)
+
 L3AA2:    TXA
           PHA
           PHA
@@ -5623,6 +5992,7 @@ L3AA2:    TXA
           JSR L5A49
           byt $06
           JMP L3C26
+
 L3ACC:    CLC
           LDA L5FE6
           ADC #$02
@@ -5652,6 +6022,7 @@ L3AFC:    LDA $8A
           CMP $8C
           BCC L3B05
           JMP L3B96
+
 L3B05:    CLC
           LDA $8A
           STA $1C
@@ -5729,6 +6100,7 @@ L3B05:    CLC
           LDA ($10,X)
           STA ($18,X)
           JMP L3AFC
+
 L3B96:    CLC
           LDA $82
           ADC #$01
@@ -5806,6 +6178,7 @@ L3B96:    CLC
           LDY #$06
           STA ($82),Y
 L3C26:    RTS
+
 L3C27:    JSR L5A6F
           byt $0E, $00, $00
           LDY #$0B
@@ -5828,6 +6201,7 @@ L3C27:    JSR L5A6F
           SBC L5F05
           BCC L3C59
           JMP L3C7B
+
 L3C59:    LDA #$01
           STA L5EAC
           TXA
@@ -5847,6 +6221,7 @@ L3C59:    LDA #$01
           JSR L5A49
           byt $06
           JMP L3D0F
+
 L3C7B:    SEC
           LDA L5EAA
           SBC L5F04
@@ -5875,11 +6250,13 @@ L3C7B:    SEC
           ORA $8D
           BEQ L3CB1
           JMP L3CBC
+
 L3CB1:    LDA #$FB
           STA $84
           LDA #$5E
           STA $85
           JMP L3D0F
+
 L3CBC:    LDA L5ED3
           STA $1C
           LDA L5ED4
@@ -5895,6 +6272,7 @@ L3CBC:    LDA L5ED3
           ORA $19
           BEQ L3CDE
           JMP L3D0F
+
 L3CDE:    TXA
           PHA
           LDY #$09
@@ -5923,9 +6301,12 @@ L3CDE:    TXA
           adr L39F0
           JSR L5A49
           byt $06
+
 L3D0F:    STX $88
           JMP L3D16
+
 L3D14:    INC $88
+
 L3D16:    CLC
           LDA L5FE6
           ADC #$02
@@ -5942,6 +6323,7 @@ L3D16:    CLC
           BPL L3D34
 L3D32:    BPL L3D37
 L3D34:    JMP L3D62
+
 L3D37:    CLC
           LDA $82
           STA $1C
@@ -5964,6 +6346,7 @@ L3D37:    CLC
           AND ($18,X)
           STA ($1C,X)
           JMP L3D14
+
 L3D62:    LDA #$B0
           STA $82
           LDA #$5E
@@ -5972,7 +6355,9 @@ L3D62:    LDA #$B0
           STA $8A
           STX $88
           JMP L3D75
+
 L3D73:    INC $88
+
 L3D75:    CLC
           LDA L5FE6
           ADC #$02
@@ -5992,6 +6377,7 @@ L3D75:    CLC
           BPL L3D9A
 L3D98:    BPL L3D9D
 L3D9A:    JMP L3DF4
+
 L3D9D:    LDA ($82,X)
           AND $8A
           STA $1C
@@ -6002,9 +6388,11 @@ L3D9D:    LDA ($82,X)
           ORA $1D
           BNE L3DB1
           JMP L3DB9
+
 L3DB1:    LDA L5EAD
           STA $1C
           JMP L3DBB
+
 L3DB9:    STX $1C
 L3DBB:    LDA ($80,X)
           ORA $1C
@@ -6028,12 +6416,16 @@ L3DBB:    LDA ($80,X)
           LDA $8A
           BEQ L3DE9
           JMP L3DF1
+
 L3DE9:    STY $8A
           INC $82
           BNE L3DF1
           INC $83
+
 L3DF1:    JMP L3D73
+
 L3DF4:    RTS
+
 L3DF5:    CLD
           LDA #$60
           STA DOS3UN2
@@ -6062,6 +6454,7 @@ L3E16:    STA $02
           LDA #$03
           STA DOS3UN1
           JMP L3F4B
+
 L3E34:    LDY #$05
 L3E36:    LDA ($02),Y
           STA $0008,Y
@@ -6101,7 +6494,9 @@ L3E73:    DEY
           STA ($08),Y
           DEX
           JMP L3E65
+
 L3E7C:    RTS
+
 L3E7D:    LDX $0C
 L3E7F:    TXA
           BNE L3E86
@@ -6115,6 +6510,7 @@ L3E86:    LDA ($0A),Y
           INC $0B
 L3E91:    DEX
           JMP L3E7F
+
 L3E95:    LDY #$03
 L3E97:    LDA ($02),Y
           STA $0008,Y
@@ -6130,6 +6526,7 @@ L3EA0:    LDA ($0A),Y
           INC $0B
           BNE L3EA0
 L3EAF:    RTS
+
 L3EB0:    JSR L5A6F
           byt $04, $00, $00
           JSR L52AD
@@ -6186,6 +6583,7 @@ L3EB0:    JSR L5A6F
           STA $08
           STA $09
           RTS
+
 L3F21:    TXA
           PHA
           LDA #$01
@@ -6210,6 +6608,7 @@ L3F21:    TXA
           SBC #$00
           STA $09
           RTS
+
 L3F4B:    JSR L5A6F
           byt $02, $00, $00
           LDA #$11
@@ -6226,9 +6625,11 @@ L3F4B:    JSR L5A6F
           STX $80
           STX $81
           JMP L3F7C
+
 L3F76:    INC $80
           BNE L3F7C
           INC $81
+
 L3F7C:    LDA $80
           CMP #$03
           LDA $81
@@ -6262,6 +6663,7 @@ L3F7C:    LDA $80
           LDA #$02
           STA ($1C,X)
           JMP L3F76
+
 L3FBC:    LDA $80
           CMP #$0B
           LDA $81
@@ -6290,6 +6692,7 @@ L3FBC:    LDA $80
           STA ($18,X)
           STA ($18),Y
           JMP L3FBC
+
 L3FF3:    TXA
           PHA
           PHA
@@ -6308,14 +6711,17 @@ L3FF3:    TXA
           JSR L5A49
           byt $02
           RTS
+
 L4011:    JSR L5A6F
           byt $02, $00, $00
           STX $80
           STX $81
           JMP L4024
+
 L401E:    INC $80
           BNE L4024
           INC $81
+
 L4024:    LDA $80
           CMP #$0B
           LDA $81
@@ -6361,7 +6767,9 @@ L4024:    LDA $80
           JSR L5A49
           byt $02
 L407A:    JMP L401E
+
 L407D:    RTS
+
 L407E:    JSR L5A6F
           byt $04, $00, $00
           PHA
@@ -6398,6 +6806,7 @@ L407E:    JSR L5A6F
           STA $08
           STA $09
           RTS
+
 L40B9:    LDA $83
           PHA
           LDA $82
@@ -6452,6 +6861,7 @@ L40B9:    LDA $83
           JSR L5A49
           byt $0A
           RTS
+
 L4116:    JSR L5A6F
           byt $00, $00, $00
           PHA
@@ -6480,14 +6890,17 @@ L4116:    JSR L5A6F
           JSR L5A49
           byt $0A
           RTS
+
 L4140:    JSR L5A6F
           byt $0A, $00, $00
           STX $80
           STX $81
           JMP L4153
+
 L414D:    INC $80
           BNE L4153
           INC $81
+
 L4153:    LDA $80
           CMP #$0B
           LDA $81
@@ -6512,10 +6925,12 @@ L415D:    BPL L4184
           ORA ($18),Y
           BEQ L418B
           JMP L414D
+
 L4184:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L418B:    JSR L52AD
           LDX #$00
           LDA $08
@@ -6546,6 +6961,7 @@ L418B:    JSR L52AD
           STA $08
           STA $09
           RTS
+
 L41C3:    LDA $82
           ORA $83
           BEQ L422C
@@ -6561,6 +6977,7 @@ L41D6:    BEQ L41DF
           STA $08
           STX $09
           RTS
+
 L41DF:    LDY #$0C
           LDA ($04),Y
           PHA
@@ -6584,6 +7001,7 @@ L41DF:    LDY #$0C
           STA $08
           STA $09
           RTS
+
 L4205:    LDA $80
           STA $1C
           LDA $81
@@ -6603,6 +7021,7 @@ L4205:    LDA $80
           LDA $83
           STA ($18),Y
           JMP L4375
+
 L422C:    LDA $85
           PHA
           LDA $84
@@ -6622,6 +7041,7 @@ L422C:    LDA $85
           STA $08
           STA $09
           RTS
+
 L4250:    LDY #$0F
           LDA ($04),Y
           STA ($84,X)
@@ -6694,6 +7114,7 @@ L42C2:    SEC
           SBC $83
           STA $09
           RTS
+
 L42CE:    LDA $80
           STA $1C
           LDA $81
@@ -6747,6 +7168,7 @@ L42FC:    BPL L4330
           LDA #$FF
           STA $09
           RTS
+
 L4330:    LDY #$0F
           LDA ($04),Y
           CMP #$01
@@ -6786,6 +7208,7 @@ L433D:    BNE L4375
           adr L52B5
           JSR L5A49
           byt $02
+
 L4375:    CLC
           LDA $80
           ADC #$4D
@@ -6801,6 +7224,7 @@ L4375:    CLC
           LDA $81
           STA $09
           RTS
+
 L4391:    JSR L5A6F
           byt $0E, $FE, $FF
           LDY #$09
@@ -6879,6 +7303,7 @@ L441E:    LDA $82
           ORA $83
           BNE L4427
           JMP L44D2
+
 L4427:    LDY #$1E
           LDA ($82),Y
           STA $86
@@ -6888,6 +7313,7 @@ L4427:    LDY #$1E
           LDA ($82,X)
           BNE L4439
           JMP L44A4
+
 L4439:    TXA
           PHA
           LDA #$1E
@@ -6910,6 +7336,7 @@ L4439:    TXA
           ORA $09
           BEQ L445F
           JMP L44A4
+
 L445F:    LDY #$26
           LDA ($86),Y
           CMP $88
@@ -6918,6 +7345,7 @@ L445F:    LDY #$26
           CMP $89
 L446A:    BEQ L446F
           JMP L44A4
+
 L446F:    LDY #$27
           LDA ($86),Y
           CMP $8A
@@ -6926,6 +7354,7 @@ L446F:    LDY #$27
           CMP $8B
 L447A:    BEQ L447F
           JMP L44A4
+
 L447F:    LDA $8C
           CMP #$FF
           BNE L4489
@@ -6933,6 +7362,7 @@ L447F:    LDA $8C
           CMP #$FF
 L4489:    BNE L448E
           JMP L449F
+
 L448E:    LDA $8C
           LDY #$28
           CMP ($86),Y
@@ -6941,20 +7371,25 @@ L448E:    LDA $8C
           CMP #$00
 L449A:    BEQ L449F
           JMP L44A4
+
 L449F:    STX $08
           STX $09
           RTS
+
 L44A4:    LDA $84
           ORA $85
           BEQ L44AD
           JMP L44BC
+
 L44AD:    LDA ($82,X)
           BEQ L44B4
           JMP L44BC
+
 L44B4:    LDA $82
           STA $84
           LDA $83
           STA $85
+
 L44BC:    LDY #$24
           LDA ($82),Y
           STA $1C
@@ -6966,13 +7401,16 @@ L44BC:    LDY #$24
           LDA $1D
           STA $83
           JMP L441E
+
 L44D2:    LDA $84
           ORA $85
           BEQ L44DB
           JMP L44E0
+
 L44DB:    STX $08
           STX $09
           RTS
+
 L44E0:    LDA $84
           STA $82
           LDA $85
@@ -7024,6 +7462,7 @@ L44E0:    LDA $84
           LDA $83
           STA $09
           RTS
+
 L453E:    LDY #$05
 L4540:    LDA ($02),Y
           STA $0008,Y
@@ -7049,6 +7488,7 @@ L4565:    LDY #$FF
 L4567:    STY $08
           STY $09
           RTS
+
 L456C:    CMP ($0A),Y
           BEQ L454E
           BCC L4565
@@ -7057,8 +7497,10 @@ L456C:    CMP ($0A),Y
           INY
           STY $08
           RTS
+
 L457A:    LDY #$00
           BEQ L4567
+
 L457E:    LDY #$05
 L4580:    LDA ($02),Y
           STA $0008,Y
@@ -7080,6 +7522,7 @@ L459D:    LDA ($0A),Y
           STA ($08),Y
           BNE L458E
 L45A3:    RTS
+
 L45A4:    JSR L5A6F
           byt $08, $00, $00
           LDY #$0B
@@ -7110,13 +7553,16 @@ L45D8:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L45DF:    LDA #$01
           STA $82
           STX $83
           JMP L45EE
+
 L45E8:    INC $82
           BNE L45EE
           INC $83
+
 L45EE:    LDA #$05
           CMP $82
           TXA
@@ -7149,7 +7595,9 @@ L4620:    BEQ L462E
           LDA $83
           STA $09
           RTS
+
 L462B:    JMP L45E8
+
 L462E:    LDA L5FFE
           STA $1C
           LDA L5FFF
@@ -7189,6 +7637,7 @@ L462E:    LDA L5FFE
           STX $08
           STX $09
           RTS
+
 L467B:    JSR L5A6F
           byt $00, $FA, $FF
           CLC
@@ -7221,6 +7670,7 @@ L467B:    JSR L5A6F
           LDA ($1C,X)
           BNE L46B9
           JMP L4765
+
 L46B9:    LDA #$04
           LDY #$FC
           STA ($06),Y
@@ -7233,6 +7683,7 @@ L46B9:    LDA #$04
           INY
           STA ($06),Y
           JMP L46DF
+
 L46CF:    CLC
           LDY #$FA
           LDA ($06),Y
@@ -7242,6 +7693,7 @@ L46CF:    CLC
           LDA ($06),Y
           ADC #$00
           STA ($06),Y
+
 L46DF:    LDY #$FA
           LDA ($06),Y
           CMP #$06
@@ -7251,6 +7703,7 @@ L46DF:    LDY #$FA
           BVS L46F1
           BMI L46F1
           JMP L4760
+
 L46F1:    INY
           LDA ($06),Y
           STA $1C
@@ -7264,6 +7717,7 @@ L46F1:    INY
           CMP #$20
           BEQ L470A
           JMP L4727
+
 L470A:    INY
           LDA ($06),Y
           STA $1C
@@ -7273,6 +7727,7 @@ L470A:    INY
           LDA ($1C,X)
           BEQ L471B
           JMP L4727
+
 L471B:    LDY #$09
           LDA ($04),Y
           STA $08
@@ -7280,6 +7735,7 @@ L471B:    LDY #$09
           LDA ($04),Y
           STA $09
           RTS
+
 L4727:    CLC
           LDY #$FC
           LDA ($06),Y
@@ -7309,14 +7765,18 @@ L4727:    CLC
           CMP ($1C,X)
           BEQ L475D
           JMP L4760
+
 L475D:    JMP L46CF
+
 L4760:    STX $08
           STX $09
           RTS
+
 L4765:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L476C:    JSR L5A6F
           byt $0A, $C4, $FF
           LDY #$09
@@ -7328,26 +7788,33 @@ L476C:    JSR L5A6F
           LDA ($80,X)
           BEQ L4784
           JMP L478B
+
 L4784:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L478B:    LDA $80
           STA $86
           LDA $81
           STA $87
           JMP L479C
+
 L4796:    INC $86
           BNE L479C
           INC $87
+
 L479C:    LDA ($86,X)
           BNE L47A3
           JMP L47AF
+
 L47A3:    LDA ($86,X)
           CMP #$2C
           BNE L47AC
           JMP L47AF
+
 L47AC:    JMP L4796
+
 L47AF:    LDA L5FFA
           STA L6002
           LDA L5FFB
@@ -7363,9 +7830,11 @@ L47AF:    LDA L5FFA
           STX $82
           STX $83
           JMP L47E0
+
 L47DA:    INC $82
           BNE L47E0
           INC $83
+
 L47E0:    LDA $82
           CMP #$1E
           LDA $83
@@ -7373,6 +7842,7 @@ L47E0:    LDA $82
           BVS L47EF
           BMI L47EF
           JMP L4803
+
 L47EF:    CLC
           LDA $82
           ADC #$04
@@ -7383,10 +7853,12 @@ L47EF:    CLC
           LDA #$A0
           STA ($1C,X)
           JMP L47DA
+
 L4803:    STX $88
 L4805:    LDA ($80,X)
           BNE L480C
           JMP L491F
+
 L480C:    CLC
           LDA #$C4
           ADC $06
@@ -7401,10 +7873,12 @@ L480C:    CLC
 L4820:    LDA ($80,X)
           BNE L4827
           JMP L4859
+
 L4827:    LDA ($80,X)
           CMP #$2C
           BNE L4830
           JMP L4859
+
 L4830:    CLC
           LDA $86
           STA $1C
@@ -7426,6 +7900,7 @@ L4830:    CLC
           LDA ($18,X)
           STA ($1C,X)
           JMP L4820
+
 L4859:    TXA
           STA ($86,X)
           CLC
@@ -7446,15 +7921,19 @@ L4859:    TXA
           LDA $09
           BMI L487E
           JMP L490B
+
 L487E:    LDA $88
           BEQ L4885
           JMP L4904
+
 L4885:    STX $82
           STX $83
           JMP L4892
+
 L488C:    INC $82
           BNE L4892
           INC $83
+
 L4892:    LDA $82
           CMP #$1E
           LDA $83
@@ -7462,6 +7941,7 @@ L4892:    LDA $82
           BVS L48A1
           BMI L48A1
           JMP L4901
+
 L48A1:    CLC
           LDA #$C4
           ADC $06
@@ -7484,6 +7964,7 @@ L48A1:    CLC
           ORA $85
           BNE L48CA
           JMP L4901
+
 L48CA:    CLC
           LDA $82
           ADC #$04
@@ -7511,23 +7992,30 @@ L48CA:    CLC
           LDA $18
           STA ($1C,X)
           JMP L488C
+
 L4901:    JMP L490B
+
 L4904:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L490B:    LDA ($80,X)
           BNE L4912
           JMP L4918
+
 L4912:    INC $80
           BNE L4918
           INC $81
+
 L4918:    LDA #$01
           STA $88
           JMP L4805
+
 L491F:    STX $08
           STX $09
           RTS
+
 L4924:    JSR L5A6F
           byt $04, $00, $00
           LDY #$09
@@ -7539,7 +8027,7 @@ L4924:    JSR L5A6F
           LDA L6033
           STA DOSVOL
           LDA L6034
-          STA DOSVOL+1
+          STA $AA67
           CLC
           LDA $80
           STA $1C
@@ -7558,6 +8046,7 @@ L4924:    JSR L5A6F
           JSR L5A49
           byt $02
           JMP L4AB2
+
 L4963:    CLC
           LDA $80
           STA $1C
@@ -7585,6 +8074,7 @@ L4963:    CLC
           BVS L4994
           BPL L4997
 L4994:    JMP L49AC
+
 L4997:    LDA #$07
           CMP $82
           TXA
@@ -7592,18 +8082,22 @@ L4997:    LDA #$07
           BVS L49A2
           BPL L49A5
 L49A2:    JMP L49AC
+
 L49A5:    LDA ($80,X)
           BNE L49AC
           JMP L49B3
+
 L49AC:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L49B3:    LDA $82
           STA L6002
           LDA $83
           STA L6003
           JMP L4AC5
+
 L49C0:    CLC
           LDA $80
           STA $1C
@@ -7631,6 +8125,7 @@ L49C0:    CLC
           BVS L49F1
           BPL L49F4
 L49F1:    JMP L4A09
+
 L49F4:    LDA #$02
           CMP $82
           TXA
@@ -7638,28 +8133,34 @@ L49F4:    LDA #$02
           BVS L49FF
           BPL L4A02
 L49FF:    JMP L4A09
+
 L4A02:    LDA ($80,X)
           BNE L4A09
           JMP L4A10
+
 L4A09:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L4A10:    LDA $82
           STA L5FFE
           LDA $83
           STA L5FFF
           JMP L4AC5
+
 L4A1D:    STX $82
           STX $83
 L4A21:    LDA ($80,X)
           CMP #$30
           BCS L4A2A
           JMP L4A6F
+
 L4A2A:    LDA #$39
           CMP ($80,X)
           BCS L4A33
           JMP L4A6F
+
 L4A33:    CLC
           LDA $80
           STA $1C
@@ -7691,9 +8192,11 @@ L4A33:    CLC
           ADC #$FF
           STA $83
           JMP L4A21
+
 L4A6F:    LDA $83
           BPL L4A76
           JMP L4A8B
+
 L4A76:    LDA #$FE
           CMP $82
           TXA
@@ -7701,13 +8204,16 @@ L4A76:    LDA #$FE
           BVS L4A81
           BPL L4A84
 L4A81:    JMP L4A8B
+
 L4A84:    LDA ($80,X)
           BNE L4A8B
           JMP L4A92
+
 L4A8B:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L4A92:    LDA $82
           STA L6033
           LDA $83
@@ -7715,12 +8221,14 @@ L4A92:    LDA $82
           LDA L6033
           STA DOSVOL
           LDA L6034
-          STA DOSVOL+1
+          STA $AA67
           JMP L4AC5
+
 L4AAB:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L4AB2:    JSR L5B0E
           byt $03, $00, $53, $00
           adr L4963
@@ -7732,6 +8240,7 @@ L4AB2:    JSR L5B0E
 L4AC5:    STX $08
           STX $09
           RTS
+
 L4ACA:    JSR L5A6F
           byt $02, $00, $00
           LDY #$09
@@ -7760,11 +8269,13 @@ L4ACA:    JSR L5A6F
           ADC #$FF
           STA $09
           RTS
+
 L4B00:    LDA $80
           STA $08
           LDA $81
           STA $09
           RTS
+
 L4B09:    JSR L5A6F
           byt $02, $00, $00
           LDY #$09
@@ -7793,11 +8304,13 @@ L4B09:    JSR L5A6F
           ADC #$00
           STA $09
           RTS
+
 L4B3F:    LDA $80
           STA $08
           LDA $81
           STA $09
           RTS
+
 L4B48:    JSR L5A6F
           byt $0C, $00, $00
           LDY #$09
@@ -7846,6 +8359,7 @@ L4B9D:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L4BA4:    LDY #$09
           LDA ($04),Y
           STA $1C
@@ -7896,6 +8410,7 @@ L4BA4:    LDY #$09
           JSR L5A49
           byt $08
           RTS
+
 L4BFA:    LDY #$1E
           LDA ($88),Y
           STA $8A
@@ -7993,6 +8508,7 @@ L4CA4:    BEQ L4CB2
           SBC $85
           STA $09
           RTS
+
 L4CB2:    SEC
           LDY #$19
           LDA ($8A),Y
@@ -8027,6 +8543,7 @@ L4CB2:    SEC
           STX $08
           STX $09
           RTS
+
 L4CF1:    LDY #$25
           LDA ($8A),Y
           AND #$7F
@@ -8102,11 +8619,13 @@ L4D44:    STY $1E
           LDA ($04),Y
           STA $09
           RTS
+
 L4D72:    LDA $84
           STA $08
           LDA $85
           STA $09
           RTS
+
 L4D7B:    JSR L5A6F
           byt $06, $00, $00
           LDY #$09
@@ -8144,6 +8663,7 @@ L4DBC:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L4DC3:    LDA #$05
           CMP $82
           TXA
@@ -8183,6 +8703,7 @@ L4DC3:    LDA #$05
           STX $08
           STX $09
           RTS
+
 L4E09:    JSR L52AD
           LDX #$00
           LDA $08
@@ -8287,6 +8808,7 @@ L4EB3:    LDA $83
           LDA $85
           STA $09
           RTS
+
 L4ECB:    JSR L5A6F
           byt $00, $00, $00
           LDY #$09
@@ -8298,6 +8820,7 @@ L4ECB:    JSR L5A6F
           TXA
           STA ($1C,X)
           RTS
+
 L4EE0:    JSR L5A6F
           byt $06, $FC, $FF
           LDY #$09
@@ -8347,6 +8870,7 @@ L4F32:    LDA #$FF
           STA $0A
           STA $0B
           RTS
+
 L4F3D:    LDA #$05
           CMP $82
           TXA
@@ -8357,6 +8881,7 @@ L4F3D:    LDA #$05
           STX $0A
           STX $0B
           RTS
+
 L4F4F:    LDY #$1E
           LDA ($82),Y
           STA $84
@@ -8486,6 +9011,7 @@ L502B:    LDY #$0E
           STA $0A
           STA $0B
           RTS
+
 L503C:    LDY #$0B
           LDA ($04),Y
           STA $1C
@@ -8567,6 +9093,7 @@ L503C:    LDY #$0B
 L50C9:    STY $0A
           STY $0B
           RTS
+
 L50CE:    LDY #$0B
           LDA ($04),Y
           STA $08
@@ -8580,6 +9107,7 @@ L50CE:    LDY #$0B
           LDA ($04),Y
           STA $0B
           RTS
+
 L50E4:    JSR L5A6F
           byt $0C, $00, $00
           LDY #$09
@@ -8627,6 +9155,7 @@ L5137:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L513E:    LDY #$0D
           LDA ($04),Y
           INY
@@ -8635,6 +9164,7 @@ L513E:    LDY #$0D
           STX $08
           STX $09
           RTS
+
 L514C:    LDY #$09
           LDA ($04),Y
           STA $1C
@@ -8685,6 +9215,7 @@ L514C:    LDY #$09
           JSR L5A49
           byt $08
           RTS
+
 L51A2:    LDY #$1E
           LDA ($88),Y
           STA $8A
@@ -8801,6 +9332,7 @@ L526C:    SEC
           SBC $85
           STA $09
           RTS
+
 L5278:    SEC
           LDY #$19
           LDA ($8A),Y
@@ -8830,14 +9362,17 @@ L5278:    SEC
           SBC $81
           STA $09
           RTS
+
 L52AD:    JSR DOS3SYS
           STY $08
           STA $09
           RTS
+
 L52B5:    LDY #$00
           LDA ($02),Y
           TAX
           JMP DOS3IO
+
 L52BD:    JSR L5A6F
           byt $04, $00, $00
           LDY #$09
@@ -8875,6 +9410,7 @@ L5300:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L5307:    LDA $80
           STA $1C
           LDA $81
@@ -8933,6 +9469,7 @@ L5307:    LDA $80
           JSR L5A49
           byt $08
           RTS
+
 L536E:    LDA $80
           STA $1C
           LDA $81
@@ -8969,10 +9506,12 @@ L536E:    LDA $80
           LDA ($04),Y
           STA $09
           JMP L5408
+
 L53B4:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L53BB:    LDA $80
           STA $1C
           LDA $81
@@ -8992,6 +9531,7 @@ L53BB:    LDA $80
           LDA ($18),Y
           STA $09
           RTS
+
 L53E0:    LDA $82
           AND #$7F
           STA $08
@@ -8999,20 +9539,25 @@ L53E0:    LDA $82
           AND #$00
           STA $09
           RTS
+
 L53ED:    LDA $82
           AND #$80
           BNE L53FA
           STX $08
           STX $09
           JMP L5400
+
 L53FA:    LDA #$01
           STA $08
           STX $09
+
 L5400:    RTS
+
 L5401:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L5408:    JSR L589C
           byt $00, $00, $04, $00
           adr L5401
@@ -9021,6 +9566,7 @@ L5408:    JSR L589C
           adr L53E0
           adr L53ED
           RTS
+
 L541A:    LDY #$00
           LDA ($02),Y
           TAX
@@ -9084,10 +9630,13 @@ L547B:    JSR L5493
           BCS L5489
           DEC $03
 L5489:    JMP L5492
+
 L548C:    LDA #$00
 L548E:    STA $08
           STA $09
+
 L5492:    RTS
+
 L5493:    JMP ($000E)
 L5496:    byt "KB:"
           byt $00, $00, $00, $00, $00
@@ -9099,6 +9648,7 @@ L5496:    byt "KB:"
           byt $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
           byt $00, $00, $00, $00, $00, $00
 L54B6:    byt $00
+
 L54B7:    LDY #$03
 L54B9:    LDA ($02),Y
           STA $000C,Y
@@ -9151,6 +9701,7 @@ L5514:    CMP #$0A
 L551A:    JSR L558F
 L551D:    PLA
 L551E:    JMP L54C6
+
 L5521:    LDY #$00
           SEC
           LDA $0C
@@ -9164,6 +9715,7 @@ L5521:    LDY #$00
           BNE L5538
           STA L54B6
 L5538:    RTS
+
 L5539:    LDY #$03
 L553B:    LDA ($02),Y
           STA $000C,Y
@@ -9198,6 +9750,7 @@ L5570:    CMP #$0A
 L5576:    JSR L558F
 L5579:    PLA
           JMP L5543
+
 L557D:    LDY #$02
           LDA ($02),Y
           STA $08
@@ -9205,11 +9758,14 @@ L557D:    LDY #$02
           LDA ($02),Y
           STA $09
           RTS
+
 L5589:    JSR RDKEY
           AND #$7F
           RTS
+
 L558F:    ORA #$80
           JMP COUT
+
 L5594:    JSR L5A6F
           byt $00, $00, $00
           LDY #$09
@@ -9219,7 +9775,9 @@ L5594:    JSR L5A6F
           LDA ($04),Y
           STA $09
           JMP L5606
+
 L55A8:    JMP L561D
+
 L55AB:    LDA DOS3UN1
           AND #$FE
           STA DOS3UN1
@@ -9232,6 +9790,7 @@ L55AB:    LDA DOS3UN1
           ORA #$01
           STA DOS3UN1
 L55C4:    JMP L561D
+
 L55C7:    LDA DOS3UN1
           AND #$FD
           STA DOS3UN1
@@ -9244,6 +9803,7 @@ L55C7:    LDA DOS3UN1
           ORA #$02
           STA DOS3UN1
 L55E0:    JMP L561D
+
 L55E3:    LDA DOS3UN1
           AND #$FB
           STA DOS3UN1
@@ -9256,10 +9816,12 @@ L55E3:    LDA DOS3UN1
           ORA #$04
           STA DOS3UN1
 L55FC:    JMP L561D
+
 L55FF:    LDA #$FF
           STA $08
           STA $09
           RTS
+
 L5606:    JSR L5B0E
           byt $04, $00, $00, $00
           adr L55A8
@@ -9273,6 +9835,7 @@ L5606:    JSR L5B0E
 L561D:    STX $08
           STX $09
           RTS
+
 L5622:    JSR L5A6F
           byt $08, $00, $00
           LDY #$09
@@ -9328,6 +9891,7 @@ L567A:    LDA $84
           LDY #$08
           JSR L58DC
           RTS
+
 L568D:    LDA $82
           STA $1C
           LDA $83
@@ -9351,6 +9915,7 @@ L568D:    LDA $82
           STA $83
           JMP L564F
 L56B9:    byt "`"
+
 L56BA:    LDY #$00
           LDA ($02),Y
           STA $08
@@ -9381,6 +9946,7 @@ L56E5:    LDA $08
           SBC $0D
           BCC L56DB
           RTS
+
 L56F0:    LDY #$00
           STY $09
           LDA ($02),Y
@@ -9398,6 +9964,7 @@ L56FE:    LDA ($0C),Y
           BNE L56FE
 L570B:    STY $08
           RTS
+
 L570E:    JSR L5A6F
           byt $06, $00, $00
           LDY #$09
@@ -9419,9 +9986,11 @@ L570E:    JSR L5A6F
           SBC #$00
           BCC L5739
           JMP L573F
+
 L5739:    LDA #$04
           STA $80
           STX $81
+
 L573F:    STX $84
           STX $85
           LDA L5FF8
@@ -9429,6 +9998,7 @@ L573F:    STX $84
           LDA L5FF9
           STA $83
           JMP L576B
+
 L5750:    LDA $82
           STA $84
           LDA $83
@@ -9443,10 +10013,12 @@ L5750:    LDA $82
           STA $82
           LDA $1D
           STA $83
+
 L576B:    LDA $82
           ORA $83
           BNE L5774
           JMP L580F
+
 L5774:    LDA ($82,X)
           CMP $80
           LDY #$01
@@ -9454,6 +10026,7 @@ L5774:    LDA ($82,X)
           SBC $81
           BCS L5783
           JMP L580C
+
 L5783:    CLC
           LDA $80
           ADC #$03
@@ -9467,6 +10040,7 @@ L5783:    CLC
           SBC ($82),Y
           BCC L579D
           JMP L57DA
+
 L579D:    CLC
           LDA ($82,X)
           ADC $82
@@ -9500,10 +10074,12 @@ L579D:    CLC
           ADC #$00
           STA $09
           RTS
+
 L57DA:    LDA $84
           ORA $85
           BNE L57E3
           JMP L57F1
+
 L57E3:    LDY #$02
           LDA ($82),Y
           STA ($84),Y
@@ -9511,6 +10087,7 @@ L57E3:    LDY #$02
           LDA ($82),Y
           STA ($84),Y
           JMP L57FE
+
 L57F1:    LDY #$02
           LDA ($82),Y
           STA L5FF8
@@ -9525,7 +10102,9 @@ L57FE:    CLC
           ADC #$00
           STA $09
           RTS
+
 L580C:    JMP L5750
+
 L580F:    CLC
           LDA L5FF6
           ADC $80
@@ -9546,9 +10125,11 @@ L580F:    CLC
           SBC $1D
           BCC L5838
           JMP L583D
+
 L5838:    STX $08
           STX $09
           RTS
+
 L583D:    LDA L5FF6
           STA $82
           LDA L5FF7
@@ -9573,6 +10154,7 @@ L583D:    LDA L5FF6
           ADC #$00
           STA $09
           RTS
+
 L5870:    LDY #$03
 L5872:    LDA ($02),Y
           STA $0008,Y
@@ -9591,6 +10173,7 @@ L588A:    LDA #$00
           STA $08
           STA $09
           RTS
+
 L5891:    CLC
           TYA
           ADC $08
@@ -9598,6 +10181,7 @@ L5891:    CLC
           BCC L589B
           INC $09
 L589B:    RTS
+
 L589C:    PLA
           STA $00
           PLA
@@ -9634,6 +10218,7 @@ L58D0:    LDA ($00),Y
           LDA ($00),Y
           STA $09
           JMP ($0008)
+
 L58DC:    STA $40
           STX $41
           TYA
@@ -9662,6 +10247,7 @@ L58FC:    ROR $01
           LDX #$00
           TXA
           RTS
+
 L590D:    JSR L597D
           LDA $42
           BPL L591F
@@ -9676,11 +10262,13 @@ L591F:    TYA
           TAX
           INY
           RTS
+
 L5923:    JSR L594F
           TYA
           TAX
           INY
           RTS
+
 L592A:    JSR L597D
           LDA $43
           BPL L5943
@@ -9695,6 +10283,7 @@ L592A:    JSR L597D
           TAX
           INY
           RTS
+
 L5940:    JSR L594F
 L5943:    LDA $00
           STA $00,X
@@ -9704,6 +10293,7 @@ L5943:    LDA $00
           TAX
           INY
           RTS
+
 L594F:    STA $40
           STX $41
           TYA
@@ -9729,6 +10319,7 @@ L595D:    ASL $00,X
 L5979:    DEY
           BNE L595D
           RTS
+
 L597D:    STA $40
           STX $41
           TYA
@@ -9757,6 +10348,7 @@ L599C:    LDA $01,X
           SBC $01,X
           STA $01,X
 L59AB:    JMP L5957
+
 L59AE:    STX $00
           STA $01
           TYA
@@ -9769,6 +10361,7 @@ L59B8:    DEC $00
           LDX #$00
           TXA
           RTS
+
 L59C2:    ASL $00,X
           ROL $01,X
           DEY
@@ -9788,6 +10381,7 @@ L59D9:    DEC $00
           LDX #$00
           TXA
           RTS
+
 L59E3:    SEC
           ROR $01,X
           ROR $00,X
@@ -9806,6 +10400,7 @@ L59F7:    DEC $00
           LDX #$00
           TXA
           RTS
+
 L5A01:    LSR $01,X
           ROR $00,X
           DEY
@@ -9849,6 +10444,7 @@ L5A22:    PLA
           TAX
           LDY #$01
           JMP ($0008)
+
 L5A49:    PLA
           STA $00
           PLA
@@ -9870,6 +10466,7 @@ L5A67:    LDA #$00
           TAX
           LDY #$01
           JMP ($0000)
+
 L5A6F:    PLA
           STA $08
           PLA
@@ -9937,6 +10534,7 @@ L5AD9:    LDA #$5A
           TAX
           LDY #$01
           JMP ($0008)
+
 L5AE7:    INC $07
           LDY #$08
           LDA ($04),Y
@@ -9957,6 +10555,7 @@ L5B03:    LDA ($0C),Y
           DEY
           BPL L5B03
           JMP ($0000)
+
 L5B0E:    PLA
           STA $00
           PLA
@@ -10003,6 +10602,7 @@ L5B50:    INY
           STA $09
           LDX #$00
           JMP ($0008)
+
 L5B5F:    STY $00
           STX $01
 L5B63:    CLC
@@ -10020,12 +10620,14 @@ L5B68:    LDA #$FF
           TAX
           INY
           RTS
+
 L5B79:    LDX $00
           ASL $00,X
           ROL $01,X
           ROL $02,X
           ROL $03,X
           JMP L5B63
+
 L5B86:    STY $00
           STX $01
           CLC
@@ -10049,6 +10651,7 @@ L5B97:    LDA #$FF
           TAX
           INY
           RTS
+
 L5BA9:    PLP
           PHP
           LDX $00
@@ -10057,10 +10660,12 @@ L5BA9:    PLP
           ROR $01,X
           ROR $00,X
           JMP L5B92
+
 L5BB8:    LDY #$01
           SEC
           LDA $02
           SBC #$02
+
 L5BBF:    STA $02
           BCS L5BC5
           DEC $03
@@ -10073,11 +10678,13 @@ L5BC5:    LDA $00,X
           LDX #$00
           TXA
           RTS
+
 L5BD3:    LDY #$03
           SEC
           LDA $02
           SBC #$04
           JMP L5BBF
+
 L5BDD:    LDY #$01
 L5BDF:    LDA ($02),Y
           STA $00,X
@@ -10094,6 +10701,7 @@ L5BF2:    LDY #$01
           LDX #$00
           TXA
           RTS
+
 L5BF8:    LDY #$03
 L5BFA:    LDA ($02),Y
           STA $00,X
@@ -10118,6 +10726,7 @@ L5C17:    byt $00
 L5C18:    byt $00
 L5C19:    byt $00
 L5C1A:    byt $00
+
 L5C1B:    JSR L5D51
           PHA
           STX $40
@@ -10160,6 +10769,7 @@ L5C5D:    LDA L5C16,Y
           TAX
           INY
           RTS
+
 L5C6A:    JSR L5CC8
           TAX
           LDY #$00
@@ -10186,6 +10796,7 @@ L5C93:    LDX #$00
           TXA
           LDY #$01
           RTS
+
 L5C99:    JSR L5CC8
           TAX
           LDA #$04
@@ -10212,6 +10823,7 @@ L5CC2:    LDA #$00
           TAX
           LDY #$01
           RTS
+
 L5CC8:    JSR L5D51
           PHA
           STX $40
@@ -10278,6 +10890,7 @@ L5D4C:    DEY
           BNE L5D0D
           PLA
           RTS
+
 L5D51:    TYA
           PHA
           LDY #$04
@@ -10298,6 +10911,7 @@ L5D63:    LDA $03,X
           LDX #$00
           PLA
           RTS
+
 L5D70:    PLA
           STA $00
           PLA
