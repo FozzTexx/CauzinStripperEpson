@@ -1,5 +1,9 @@
 	ORG $0900
 
+	;; Macro Assembler AS doesn't support the standard
+	;; 6502 assembler method of using < and > to get the
+	;; low and high bytes of an address, so these macros
+	;; are used instead
 LB	FUNCTION b,(b&$ff)
 HB	FUNCTION b,(b>>8)
 	
@@ -1717,8 +1721,7 @@ L1A15:	JSR L14B0
 	JMP L19DD
 
 L1A36:	RTS
-L1A37:	byt " ENTER A TITLE FOR THESE DATA STRIPS    "
-	byt $00
+L1A37:	byt " ENTER A TITLE FOR THESE DATA STRIPS    ", $00
 
 L1A60:	JSR L5A6F
 	byt $00, $00, $00
@@ -2216,9 +2219,9 @@ L1D1C:	JSR L1A60
 	JSR L20F7
 	LDX #$00
 	STX $80
-	LDA #$0A
+	LDA #LB(L5F0A)
 	STA $84
-	LDA #$5F
+	LDA #HB(L5F0A)
 	STA $85
 	JMP L1E0A
 
@@ -2260,10 +2263,8 @@ L1E1E:	LDA $85
 	JMP L1E08
 
 L1E4F:	RTS
-L1E50:	byt "Page "
-	byt $00
-	byt " of "
-	byt $00
+L1E50:	byt "Page ", $00
+	byt " of ", $00
 
 L1E5B:	JSR L5A6F
 	byt $0E, $FA, $FF
@@ -3345,12 +3346,9 @@ L2594:	TXA
 	STY $08
 	STX $09
 	RTS
-L2600:	byt "NORMAL"
-	byt $00
-L2607:	byt " HIGH "
-	byt $00
-L260E:	byt "  LOW "
-	byt $00
+L2600:	byt "NORMAL", $00
+L2607:	byt " HIGH ", $00
+L260E:	byt "  LOW ", $00
 
 L2615:	JSR L5A6F
 	byt $00, $00, $00
@@ -3394,8 +3392,7 @@ L2639:	LDA L5E55
 	LDA L5E55
 	STA $22
 	RTS
-L266A:	byt "DATA STRIP PRINTING PROGRAM"
-	byt $00
+L266A:	byt "DATA STRIP PRINTING PROGRAM", $00
 
 L2686:	JSR L5A6F
 	byt $00, $FF, $FF
@@ -3510,9 +3507,9 @@ L2755:	JSR L5A6F
 	STA $86
 	LDA L606D
 	STA $87
-	LDA #$2A
+	LDA #HB(L2AE2)
 	PHA
-	LDA #$E2
+	LDA #LB(L2AE2)
 	PHA
 	CLC
 	LDA #$D7
@@ -3696,9 +3693,9 @@ L28A4:	LDA #$3F
 
 L28AB:	LDA #$FF
 	STA $32
-L28AF:	LDA #$2B
+L28AF:	LDA #HB(L2B03)
 	PHA
-	LDA #$03
+	LDA #LB(L2B03)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3745,9 +3742,9 @@ L28FF:	LDA #$3F
 
 L2906:	LDA #$FF
 	STA $32
-L290A:	LDA #$2B
+L290A:	LDA #HB(L2B1C)
 	PHA
-	LDA #$1C
+	LDA #LB(L2B1C)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3758,9 +3755,9 @@ L290A:	LDA #$2B
 	BNE L2922
 	JMP L2934
 
-L2922:	LDA #$2B
+L2922:	LDA #HB(L2B37)
 	PHA
-	LDA #$37
+	LDA #LB(L2B37)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3768,9 +3765,9 @@ L2922:	LDA #$2B
 	byt $02
 	JMP L2943
 
-L2934:	LDA #$2B
+L2934:	LDA #HB(L2B3B)
 	PHA
-	LDA #$3B
+	LDA #LB(L2B3B)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3787,9 +3784,9 @@ L294D:	LDA #$3F
 
 L2954:	LDA #$FF
 	STA $32
-L2958:	LDA #$2B
+L2958:	LDA #HB(L2B3F)
 	PHA
-	LDA #$3F
+	LDA #LB(L2B3F)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3806,9 +3803,9 @@ L2971:	LDA #$3F
 
 L2978:	LDA #$FF
 	STA $32
-L297C:	LDA #$2B
+L297C:	LDA #HB(L2B48)
 	PHA
-	LDA #$48
+	LDA #LB(L2B48)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3836,9 +3833,9 @@ L297C:	LDA #$2B
 	adr L235E
 	JSR L5A49
 	byt $02
-	LDA #$2B
+	LDA #HB(L2B5F)
 	PHA
-	LDA #$5F
+	LDA #LB(L2B5F)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3902,9 +3899,9 @@ L2A0B:	CLC
 	adr L20FE
 	JSR L5A49
 	byt $04
-	LDA #$2B
+	LDA #HB(L2B61)
 	PHA
-	LDA #$61
+	LDA #LB(L2B61)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3930,9 +3927,9 @@ L2A0B:	CLC
 	BCC L2A5E
 	JMP L2A70
 
-L2A5E:	LDA #$2B
+L2A5E:	LDA #HB(L2B63)
 	PHA
-	LDA #$63
+	LDA #LB(L2B63)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3940,9 +3937,9 @@ L2A5E:	LDA #$2B
 	byt $02
 	JMP L2A7F
 
-L2A70:	LDA #$2B
+L2A70:	LDA #HB(L2B66)
 	PHA
-	LDA #$66
+	LDA #LB(L2B66)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3970,9 +3967,9 @@ L2A88:	CLC
 	byt $02
 	JMP L2AB6
 
-L2AA7:	LDA #$2B
+L2AA7:	LDA #HB(L2B68)
 	PHA
-	LDA #$68
+	LDA #LB(L2B68)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -3991,9 +3988,9 @@ L2AC3:	LDA #$3F
 
 L2ACA:	LDA #$FF
 	STA $32
-L2ACE:	LDA #$2B
+L2ACE:	LDA #HB(L2B8B)
 	PHA
-	LDA #$8B
+	LDA #LB(L2B8B)
 	PHA
 	JSR L5A0A
 	adr L235E
@@ -4002,28 +3999,19 @@ L2ACE:	LDA #$2B
 	LDA #$FF
 	STA $32
 	RTS
-L2AE2:	byt "(   ) DATA STRIPS ON (  ) PAGES"
-	byt $0D, $00
-	byt "DENSITY                 "
-	byt $00
-	byt "AUTO-EXECUTE FILE 1       "
-	byt $00
-	byt "ON "
-	byt $00
-	byt "OFF"
-	byt $00, $0D
-	byt "CATALOG"
-	byt $00, $0D
-	byt "GRAPHICS CARD        "
-	byt $00, $0D, $00, $0D, $00
-	byt ". "
-	byt $00
-	byt "."
-	byt $00
-	byt "                                  "
-	byt $00, $0D, $0D
-	byt "PRINT"
-	byt $00
+L2AE2:	byt "(   ) DATA STRIPS ON (  ) PAGES\r", $00
+L2B03:	byt "DENSITY                 ", $00
+L2B1C:	byt "AUTO-EXECUTE FILE 1       ", $00
+L2B37:	byt "ON ", $00
+L2B3B:	byt "OFF", $00
+L2B3F:	byt "\rCATALOG", $00
+L2B48:	byt "\rGRAPHICS CARD        ", $00
+L2B5F:	byt "\r", $00
+L2B61:	byt "\r", $00
+L2B63:	byt ". ", $00
+L2B66:	byt ".", $00
+L2B68:	byt "                                  ", $00
+L2B8B:	byt "\r\rPRINT", $00
 
 L2B93:	JSR L5A6F
 	byt $04, $00, $00
@@ -5178,28 +5166,25 @@ L34B8:	ROR $08
 	CLC
 	RTS
 
-L34BF:	LDA $C088,Y
+L34BF:	LDA $C088,Y		; Read character
 	AND #$7F
-	CMP #$13
+	CMP #$13		; Check for XOFF
 	BEQ L34C9
 	RTS
 
-L34C9:	LDA $C089,Y
+L34C9:	LDA $C089,Y		; Get status
 	AND #$08
-	BEQ L34C9
-	LDA $C088,Y
+	BEQ L34C9		; Receive not full
+	LDA $C088,Y		; Read character
 	AND #$7F
-	CMP #$11
+	CMP #$11		; Check for XON
 	BNE L34C9
 	RTS
 L34DA:	byt $6C
 	byt $08, $00
-L34DD:	byt "  GRAPPLER  "
-	byt $00
-L34EA:	byt "  DUMPLING  "
-	byt $00
-L34F7:	byt "SUPER SERIAL"
-	byt $00
+L34DD:	byt "  GRAPPLER  ", $00
+L34EA:	byt "  DUMPLING  ", $00
+L34F7:	byt "SUPER SERIAL", $00
 
 L3504:	CLC
 	LDY #$03
