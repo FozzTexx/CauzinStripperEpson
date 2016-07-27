@@ -1,14 +1,21 @@
           ORG $0900
 
-HOME      EQU $FC58
-CLREOL    EQU $FC9C
-COUT1     EQU $FDF0
-RDKEY     EQU $FD0C
-TABV      EQU $FB5B
-COUT      EQU $FDED
+DOS3UN1   EQU $03CA
+DOS3UN2   EQU $03CD
 DOS3IO    EQU $03D6
 DOS3SYS   EQU $03DC
-DOS3UNK   EQU $A060
+SOFTEV    EQU $03F2
+DOSVOL    EQU $AA66
+KBD       EQU $C000
+KBDSTB    EQU $C010
+BASIC     EQU $E000
+TABV      EQU $FB5B
+MDRTS     EQU $FBC0
+HOME      EQU $FC58
+CLREOL    EQU $FC9C
+RDKEY     EQU $FD0C
+COUT      EQU $FDED
+COUT1     EQU $FDF0
 
 L0900:    JMP L3DF5
 SLOT:     byt $00
@@ -2910,7 +2917,7 @@ L23E8:    LDY #$02
           LDY #$00
           LDA ($02),Y
           JMP TABV
-L23F5:    JMP ($03F2)
+L23F5:    JMP (SOFTEV)
 L23F8:    LDY #$00
           LDA ($02),Y
           ORA #$80
@@ -2921,9 +2928,9 @@ L2404:    AND #$7F
           LDX #$00
           STX $09
           RTS
-L240D:    LDA $C000
+L240D:    LDA KBD
           BPL L240D
-          STA $C010
+          STA KBDSTB
           BMI L2404
 L2417:    JSR L5A6F
           byt $00, $FC, $FE
@@ -4854,7 +4861,7 @@ L345F:    LDA ($02),Y
           LDA $FBB3
           CMP #$06
           BNE L347D
-          LDA $FBC0
+          LDA MDRTS
           BNE L347D
           LDA #$30
           STA L345C
@@ -6029,8 +6036,8 @@ L3DF1:    JMP L3D73
 L3DF4:    RTS
 L3DF5:    CLD
           LDA #$60
-          STA $03CD
-          LDA $E000
+          STA DOS3UN2
+          LDA BASIC
           CMP #$20
           BNE L3E08
           LDA $4C
@@ -6053,7 +6060,7 @@ L3E16:    STA $02
           STA L5FF8
           STA L5FF9
           LDA #$03
-          STA $03CA
+          STA DOS3UN1
           JMP L3F4B
 L3E34:    LDY #$05
 L3E36:    LDA ($02),Y
@@ -7530,9 +7537,9 @@ L4924:    JSR L5A6F
           LDA ($04),Y
           STA $81
           LDA L6033
-          STA $AA66
+          STA DOSVOL
           LDA L6034
-          STA $AA67
+          STA DOSVOL+1
           CLC
           LDA $80
           STA $1C
@@ -7706,9 +7713,9 @@ L4A92:    LDA $82
           LDA $83
           STA L6034
           LDA L6033
-          STA $AA66
+          STA DOSVOL
           LDA L6034
-          STA $AA67
+          STA DOSVOL+1
           JMP L4AC5
 L4AAB:    LDA #$FF
           STA $08
@@ -9111,7 +9118,7 @@ L54D2:    DEC $0E
           BNE L54DF
           INC L54B6
           BNE L5521
-L54DF:    LDA $03CA
+L54DF:    LDA DOS3UN1
           AND #$02
           BEQ L54EC
           CPX #$0D
@@ -9123,13 +9130,13 @@ L54EC:    LDY #$00
           INC $0C
           BNE L54F7
           INC $0D
-L54F7:    LDA $03CA
+L54F7:    LDA DOS3UN1
           AND #$01
           BEQ L551E
           TXA
           PHA
           JSR L558F
-          LDA $03CA
+          LDA DOS3UN1
           AND #$04
           BEQ L551D
           PLA
@@ -9176,7 +9183,7 @@ L554F:    DEC $0E
           BNE L555C
           INC $0D
 L555C:    JSR L558F
-          LDA $03CA
+          LDA DOS3UN1
           AND #$04
           BEQ L5579
           PLA
@@ -9213,41 +9220,41 @@ L5594:    JSR L5A6F
           STA $09
           JMP L5606
 L55A8:    JMP L561D
-L55AB:    LDA $03CA
+L55AB:    LDA DOS3UN1
           AND #$FE
-          STA $03CA
+          STA DOS3UN1
           LDY #$0B
           LDA ($04),Y
           INY
           ORA ($04),Y
           BEQ L55C4
-          LDA $03CA
+          LDA DOS3UN1
           ORA #$01
-          STA $03CA
+          STA DOS3UN1
 L55C4:    JMP L561D
-L55C7:    LDA $03CA
+L55C7:    LDA DOS3UN1
           AND #$FD
-          STA $03CA
+          STA DOS3UN1
           LDY #$0B
           LDA ($04),Y
           INY
           ORA ($04),Y
           BEQ L55E0
-          LDA $03CA
+          LDA DOS3UN1
           ORA #$02
-          STA $03CA
+          STA DOS3UN1
 L55E0:    JMP L561D
-L55E3:    LDA $03CA
+L55E3:    LDA DOS3UN1
           AND #$FB
-          STA $03CA
+          STA DOS3UN1
           LDY #$0B
           LDA ($04),Y
           INY
           ORA ($04),Y
           BEQ L55FC
-          LDA $03CA
+          LDA DOS3UN1
           ORA #$04
-          STA $03CA
+          STA DOS3UN1
 L55FC:    JMP L561D
 L55FF:    LDA #$FF
           STA $08
