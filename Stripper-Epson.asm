@@ -5166,7 +5166,7 @@ L3448:  LDA $C080,Y
         STA $C081,Y
         STA $C080,Y
         RTS
-L345C:  byt $00
+CMPTYP: byt $00
 L345D:  byt $A0, $00
 
 	;; Super Serial Card routine
@@ -5174,7 +5174,7 @@ L345F:  LDA ($02),Y
         PHA
         LDY SLOT
         LDA CMPTYP
-        BNE L3482
+        BNE L3482		; Computer type already determined
         LDA SYSID1
         CMP #$06		; Check if Apple IIe/IIc
         BNE NOTIIC
