@@ -22,3 +22,5 @@ the Softstrip format
 here](http://mirrors.apple2.org.za/ftp.apple.asimov.net/documentation/hardware/io/cauzin_softstrip/Cauzin%20Softstrip%20StripWare%20Stripper%20Software%20Manual.pdf)
 and [documentation on the reader hardware
 here](https://archive.org/details/CauzinSoftstrip).
+
+http://www.apple2scans.net/2015/12/20/cauzin-softstrip-reader-manuals-software-etc/
