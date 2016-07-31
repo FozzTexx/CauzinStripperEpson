@@ -3,6 +3,20 @@ Softstrip "Stripper" program whic creates Softstrip barcodes. The
 program only works on DOS 3.3 and prints the codes directly on an
 Epson printer.
 
+The program doesn't seem to actually work. It complains of read errors
+when it goes to load the file that is to be encoded. Even after
+patching around it, the program just goes into a loop and never sends
+any output to the printer other than a couple of initialization codes.
+
+It definitely looks like the program was written in a high level
+language and then compiled. I'm not sure what language it was written
+in or what compiler was used. The program spends 99% of its time
+shuffling pointers to pointers in and out of the zero page. One of the
+things it likes to do most is push an address onto the stack, call a
+subroutine to allocate some space below HIMEM and copy it there, then
+copy the address to the zero page, then shuffle some more pointers
+around, and finally release the space below HIMEM.
+
 The files are:
 
   * STRIPPER.E.bas - The BASIC portion of the entire program in plain ASCII
